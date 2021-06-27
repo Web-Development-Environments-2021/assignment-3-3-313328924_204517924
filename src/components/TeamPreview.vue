@@ -1,8 +1,9 @@
 <template>
     <div>
-     {{data}}  
+     {{data}}   
     </div>
 </template>
+
 <script>
 export default {
     props: {data: Object},
@@ -11,18 +12,13 @@ export default {
         return{
             id: 0,
             name:"",
-            image:"",
-            position:"",
-            teamName:""
+            logo:""
         }
     },
     created() {
         this.id = this.data.id;
         this.name = this.data.name;
-        this.image = this.data.image;
-        this.position = this.data.position;
-        this.team_name = this.data.team_name;    
+        this.logo = this.data.logo;
     },
-
 }
 </script>
