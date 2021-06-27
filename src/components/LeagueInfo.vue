@@ -23,9 +23,29 @@ export default {
     return {
       leagueName: "superliga", 
       season: "season", 
-      stage: "stage"
+      stage: "stage",
+      nextGame: null
     };
   },
+  methods: {
+    async getLeagueInfo(){
+      try {
+        const leagueInfo = await this.axios.get(`${this.$root.store.domain_server}/league/getDetails`);
+        console.log(leagueInfo);
+        this.leagueName = leagueInfo.data.name;
+        this.season = leagueInfo.data.season;
+        this.stage = leagueInfo.data.stage;
+        this.nextGame = leagueInfo.data.nextGame;
+      } catch (error) {
+        console.log(error);
+        
+      }  
+    }
+
+  },
+  mounted() {
+    this.getLeagueInfo(); 
+  }
 }
 </script>
 

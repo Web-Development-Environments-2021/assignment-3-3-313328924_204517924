@@ -69,8 +69,12 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
+  domain_server: "http://localhost:3000",
+
   // username: localStorage.username,
-  username: "hilla",
+  username: "",
+  searchTypes: ["team"], //our app allows search for teams and players
+
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
@@ -82,7 +86,6 @@ const shared_data = {
     this.username = undefined;
   }
 };
-console.log(shared_data);
 // Vue.prototype.$root.store = shared_data;
 
 new Vue({
