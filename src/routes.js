@@ -31,10 +31,10 @@ const routes = [{
             import ("./pages/LeagueManagment")
     },
     {
-        path: "/LeagueFixture",
-        name: "LeagueFixture",
+        path: "/LeagueFixtures",
+        name: "LeagueFixtures",
         component: () =>
-            import ("./pages/LeagueFixture")
+            import ("./pages/LeagueFixtures")
     },
     {
         path: "*",

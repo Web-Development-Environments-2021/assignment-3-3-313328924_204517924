@@ -25,7 +25,7 @@ export default {
     },
     async created(){
         const seperatedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/getGamesSeperate`);
-        consol.log(seperatedGames.data);
+        console.log(seperatedGames.data.pastGames);
         this.pastGames = seperatedGames.data.pastGames;
         this.upComingGames = seperatedGames.data.nextGames;
     }

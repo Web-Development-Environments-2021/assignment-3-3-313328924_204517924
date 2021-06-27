@@ -6,7 +6,7 @@
         <b-navbar-nav>
 
         <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
-        <b-nav-item :to="{ name: 'LeagueFixture' }">League Fixture</b-nav-item>
+        <b-nav-item :to="{ name: 'LeagueFixtures' }">League Fixture</b-nav-item>
         <!-- add v-if for this option -->
         <b-nav-item :to="{ name: 'LeagueManagment' }">League Managment</b-nav-item>
         </b-navbar-nav>
