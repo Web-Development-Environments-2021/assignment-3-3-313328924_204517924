@@ -24,28 +24,12 @@ export default {
 
     },
     async created(){
-        const gameAndActivity = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/getAllGames`);
-        let games = gameAndActivity.data.game;
-        let d = new Date();
-        console.log(d) 
-        let curTime = d.getTime();
-        let past = [];
-        let future = [];
-        games.forEach(game => {
-            console.log(game.date);
-            console.log(typeof(game.date));
-            if(game.date.getTime() > curTime)
-                future.push(game);
-            else
-                past.push(game);   
-        });
-        consol.log(past);
-        this.pastGames = past;
-        this.upComingGames = future;
-        // this.games = gameAndActivity.data.game;
-        // this.activity = gameAndActivity.data.activity;
+        const seperatedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/getGamesSeperate`);
+        consol.log(seperatedGames.data);
+        this.pastGames = seperatedGames.data.pastGames;
+        this.upComingGames = seperatedGames.data.nextGames;
     }
-}
+};
 </script>
 
 <style>
