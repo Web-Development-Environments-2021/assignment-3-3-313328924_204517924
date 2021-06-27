@@ -38,6 +38,11 @@ export default {
       ]
     };
   },
+  // computed:{
+  //   getFavoriteGames(){
+  //     this.games = 
+  //   }
+  // }
   // methods: {
   //   async updateGames(){
   //     console.log("response");

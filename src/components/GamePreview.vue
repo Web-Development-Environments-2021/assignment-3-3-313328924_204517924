@@ -3,12 +3,16 @@
     <div :title="id" class="game-title">
       <b>Game Id:</b> {{ id }}
     </div>
-    <ul class="game-content">
-      <li> host: {{ hostTeam }}</li>
-      <li> guest: {{ guestTeam }}</li>
-      <li> date: {{ date }}</li>
-      <li> time: {{ hour }}</li>
-    </ul>
+    <!-- <b-card-group deck> -->
+      <!-- <b-card header="Card with list group"> -->
+        <b-list-group>
+          <b-list-group-item >host: {{ hostTeam }}</b-list-group-item> <br>
+          <b-list-group-item >guest: {{ guestTeam }}</b-list-group-item><br>
+          <b-list-group-item >date: {{ date }}</b-list-group-item><br>
+          <b-list-group-item >time: {{ hour }}</b-list-group-item><br>
+        </b-list-group>
+      <!-- </b-card> -->
+    <!-- </b-card-group> -->
   </div>
 </template>
 
@@ -47,7 +51,7 @@ export default {
 .game-preview {
   display: inline-block;
   width: 250px;
-  height: 200px;
+  height: 300px;
   position: relative;
   margin: 10px 10px;
   border-style: solid;
