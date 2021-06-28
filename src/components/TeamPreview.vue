@@ -1,6 +1,6 @@
 <template>
     <div>
-     {{data}}   
+     <router-link :to="{name: 'TeamCard', params: {teamId: id}}">{{data}}</router-link>
     </div>
 </template>
 
