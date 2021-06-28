@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+       {{id}}, {{name}}, {{commonName}} 
     </div>
 </template>
 
@@ -21,8 +21,8 @@ export default {
         }
     },
     methods: {
-        async getPlayerDetails(id){
-            const playerDetails = await this.axios.get(`${this.$root.store.domain_server}/players/playerDetails/${id}`);
+        async getPlayerDetails(){
+            const playerDetails = await this.axios.get(`${this.$root.store.domain_server}/players/playerDetails/${this.id}`);
             this.name = playerDetails.data.name;
             this.commonName = playerDetails.data.common_name;
             this.teamName = playerDetails.data.team_name;
@@ -36,7 +36,7 @@ export default {
     },
     created(){
         this.id = this.$route.params.playerId;
-        this.getPlayerDetails(this.id);
+        this.getPlayerDetails();
     }
 }
 </script>

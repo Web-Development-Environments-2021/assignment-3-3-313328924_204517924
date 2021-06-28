@@ -37,6 +37,18 @@ const routes = [{
             import ("./pages/LeagueFixture")
     },
     {
+      path: "/PlayerCard/:playerId",
+      name: "PlayerCard",
+      component: () =>
+        import("./pages/PlayerCard")
+    },
+    {
+      path: "/TeamCard/:teamId",
+      name: "TeamCard",
+      component: () =>
+        import("./pages/TeamCard")
+    },
+    {
         path: "*",
         name: "notFound",
         component: NotFound

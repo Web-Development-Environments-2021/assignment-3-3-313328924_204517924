@@ -7,6 +7,16 @@
         <b-button variant="success" @click="getResults">Search</b-button>
       </b-input-group-append>
     </b-input-group>
+    <b-form-group label="Button style radios" v-slot="{ ariaDescribedby }">
+      <b-form-radio-group
+        id="btn-radios-1"
+        v-model="searchFor"
+        :options="options"
+        :aria-describedby="ariaDescribedby"
+        name="radios-btn-default"
+        buttons
+      ></b-form-radio-group>
+    </b-form-group>
       <br/>
       Your search Query: {{ searchQuery }}
       <SearchResults 
@@ -28,18 +38,16 @@ export default {
     return {
       searchQuery:"",
       results: [],
-      searchFor: "team"
+      searchFor: "player",
+      options: [
+          { text: 'Players', value: 'player' },
+          { text: 'Teams', value: 'team' },
+      ]
     };
   },
   methods: {
-    // async getResultsForSearchType(searchType){
-    //   const results = await this.axios.get(
-    //     `${this.$root.store.domain_server}/${searchType}/${searchType}Search/${query}`);
-    // },
-    async getResults(searchTypes){
-      console.log(`${this.$root.store.domain_server}/${this.searchTypes[1]}s/${this.searchTypes[1]}Search/${this.searchQuery}`)
+    async getResults(){
       const result = await this.axios.get(`${this.$root.store.domain_server}/${this.searchFor}s/${this.searchFor}Search/${this.searchQuery}`);
-      console.log(result.data);
       this.results = result.data;
     }
   },
