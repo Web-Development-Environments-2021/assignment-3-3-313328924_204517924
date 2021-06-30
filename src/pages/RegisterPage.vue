@@ -26,6 +26,61 @@
       </b-form-group>
 
       <b-form-group
+        id="input-group-email"
+        label-cols-sm="3"
+        label="Email:"
+        label-for="email"
+      >
+        <b-form-input
+          id="email"
+          v-model="$v.form.email.$model"
+          type="text"
+          :state="validateState('email')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.email.required">
+          Email is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.email.email">
+          Email is not valid
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+
+      <b-form-group
+        id="input-group-firstname"
+        label-cols-sm="3"
+        label="Firstname:"
+        label-for="firstname"
+      >
+        <b-form-input
+          id="firstname"
+          v-model="$v.form.firstname.$model"
+          type="text"
+          :state="validateState('firstname')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.firstname.required">
+          Firstname is required
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-lastname"
+        label-cols-sm="3"
+        label="Lastname:"
+        label-for="lastname"
+      >
+        <b-form-input
+          id="lastname"
+          v-model="$v.form.lastname.$model"
+          type="text"
+          :state="validateState('lastname')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.lastname.required">
+          Lastname is required
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-form-group
         id="input-group-country"
         label-cols-sm="3"
         label="Country:"
@@ -90,13 +145,31 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
+       <b-form-group
+        id="input-group-image"
+        label-cols-sm="3"
+        label="Image:"
+        label-for="image"
+      >
+        <b-form-input
+          id="image"
+          v-model="$v.form.image.$model"
+          type="text"
+          :state="validateState('image')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.image.required">
+          Image URL is required
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
         type="submit"
         variant="primary"
         style="width:250px;"
         class="ml-5 w-75"
-        >Register</b-button
+        @click="Register">Register</b-button
       >
       <div class="mt-2">
         You have an account already?
@@ -136,12 +209,13 @@ export default {
     return {
       form: {
         username: "",
-        firstName: "",
-        lastName: "",
+        firstname: "",
+        lastname: "",
         country: null,
         password: "",
         confirmedPassword: "",
         email: "",
+        image:"",
         submitError: undefined
       },
       countries: [{ value: null, text: "", disabled: true }],
@@ -156,16 +230,36 @@ export default {
         length: (u) => minLength(3)(u) && maxLength(8)(u),
         alpha
       },
+      firstname:{
+        required
+      },
+      lastname:{
+        required
+      },
       country: {
         required
       },
       password: {
         required,
-        length: (p) => minLength(5)(p) && maxLength(10)(p)
+        length: (p) => minLength(5)(p) && maxLength(10)(p),
+        containsNumber: function(value) {
+          return /[0-9]/.test(value)
+        },
+        containsSpecial: function(value) {
+          return /[#?!@$%^&*-+=~`]/.test(value)
+        }
+
       },
       confirmedPassword: {
         required,
         sameAsPassword: sameAs("password")
+      },
+      email:{
+        required,
+        email
+      },
+      image:{
+        required
       }
     }
   },
@@ -176,23 +270,38 @@ export default {
   },
   methods: {
     validateState(param) {
-      const { $dirty, $error } = this.$v.form[param];
+      const {$dirty, $error } = this.$v.form[param];
       return $dirty ? !$error : null;
     },
-    async Register() {
+    async Register(){
       try {
-        const response = await this.axios.post(
-          "https://test-for-3-2.herokuapp.com/user/Register",
+        console.log(this.form.image);
+        const regRespons = await this.axios.post(
+          `${this.$root.store.domain_server}/Register`, 
           {
             username: this.form.username,
-            password: this.form.password
-          }
-        );
-        this.$router.push("/login");
+            firstname: this.form.firstname,
+            lastname: this.form.lastname,
+            country: this.form.country,
+            password: this.form.password,
+            confirmed_password: this.form.confirmed_password,
+            email: this.form.email,
+            image_url: this.form.image
+          });
+          console.log(regRespons);
+        // const response = await this.axios.post(
+        //   "https://test-for-3-2.herokuapp.com/user/Register",
+        //   {
+        //     username: this.form.username,
+        //     password: this.form.password
+        //   }
+        // );
+        this.$router.push("/login").catch(()=>{});
         // console.log(response);
       } catch (err) {
-        console.log(err.response);
-        this.form.submitError = err.response.data.message;
+        // console.log('**************************************************'+err.response);
+        this.form.submitError = err.response.data;
+        // console.log(err.response.data);
       }
     },
     onRegister() {
@@ -207,12 +316,13 @@ export default {
     onReset() {
       this.form = {
         username: "",
-        firstName: "",
-        lastName: "",
+        firstname: "",
+        lastname: "",
         country: null,
         password: "",
         confirmedPassword: "",
-        email: ""
+        email: "",
+        image:""
       };
       this.$nextTick(() => {
         this.$v.$reset();
