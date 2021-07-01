@@ -14,6 +14,8 @@ import PlayerPreview from './components/PlayerPreview';
 Vue.component("PlayerPreview", PlayerPreview);
 import TeamPreview from './components/TeamPreview.vue';
 Vue.component("TeamPreview", TeamPreview);
+import AddFavorite from './components/AddFavorite.vue';
+Vue.component("AddFavorite", AddFavorite);
 
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";

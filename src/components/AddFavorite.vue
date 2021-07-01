@@ -10,11 +10,14 @@ export default {
 
     methods: {
         async addToFavorite(){
-            await this.axios.post(`${this.$root.store.domain_server}/users/addFavorite${this.type}`, {
-                bodey:{
+            try{
+                // await this.axios.post(`${this.$root.store.domain_server}/users/addFavorite${this.type}`, {
+                await this.axios.post("http://localhost:3000/users/addFavoritePlayers", {
                     id: this.id
-                }
-            })
+                });
+            }catch(err){
+                console.log(err);
+            }
         }
     },
 }

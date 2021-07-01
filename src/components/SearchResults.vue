@@ -8,7 +8,7 @@
             :data="results[index]"
             ></component>   
         </div>
-        <!-- <div>{{results[0]}}</div> -->
+        <div></div>
     </div>
 </template>
 
@@ -16,8 +16,8 @@
 
 export default {
     components:{
-        PlayerPreview: PlayerPreview,
-        TeamPreview: TeamPreview   
+        // PlayerPreview: PlayerPreview,
+        // TeamPreview: TeamPreview   
     },
     props: {type: String, results: Array},
     data(){
