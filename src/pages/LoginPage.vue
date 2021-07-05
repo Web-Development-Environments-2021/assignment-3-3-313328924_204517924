@@ -93,21 +93,28 @@ export default {
     },
     async Login() {
       try {
-        const response = await this.axios.post(
-          "https://localhost:3000/user/Login",
+        const loginRespons = await this.axios.post(
+          `${this.$root.store.domain_server}/Login`, 
           {
             username: this.form.username,
-            password: this.form.password
+            password: this.form.password,
           }
         );
+        console.log(loginRespons);
+        // const response = await this.axios.post(
+        //   "https://localhost:3000/user/Login",
+        //   {
+        //     username: this.form.username,
+        //     password: this.form.password
+        //   }
+        // );
         // console.log(response);
         // this.$root.loggedIn = true;
-        console.log(this.$root.store.login);
         this.$root.store.login(this.form.username);
-        this.$router.push("/");
+        this.$router.push("/").catch(()=>{});
       } catch (err) {
         console.log(err.response);
-        this.form.submitError = err.response.data.message;
+        this.form.submitError = err.response.data;
       }
     },
     onLogin() {

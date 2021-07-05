@@ -20,7 +20,7 @@
             User
           </template>
           <b-dropdown-item href="#">Favorites</b-dropdown-item>
-          <b-dropdown-item href="#">Log Out</b-dropdown-item>
+          <b-dropdown-item href="#" @click="Logout">Log Out</b-dropdown-item>
         </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -34,8 +34,13 @@ export default {
   name: "App",
   methods: {
     Logout() {
-      this.$root.store.logout();
-      this.$root.toast("Logout", "User logged out successfully", "success");
+      try{
+        const response = this.axios.post(`${this.$root.store.domain_server}/Logout`);
+        this.$root.store.logout();
+        this.$root.toast("Logout", "User logged out successfully", "success");
+      }catch(err){
+        console.log(err);
+      }
 
       this.$router.push("/").catch(() => {
         this.$forceUpdate();

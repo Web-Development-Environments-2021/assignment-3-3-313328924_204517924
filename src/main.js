@@ -10,6 +10,13 @@ const router = new VueRouter({
     routes
 });
 
+import PlayerPreview from './components/PlayerPreview';
+Vue.component("PlayerPreview", PlayerPreview);
+import TeamPreview from './components/TeamPreview.vue';
+Vue.component("TeamPreview", TeamPreview);
+import AddFavorite from './components/AddFavorite.vue';
+Vue.component("AddFavorite", AddFavorite);
+
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";

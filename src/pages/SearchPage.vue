@@ -47,10 +47,16 @@ export default {
   },
   methods: {
     async getResults(){
-      const result = await this.axios.get(`${this.$root.store.domain_server}/${this.searchFor}s/${this.searchFor}Search/${this.searchQuery}`);
-      this.results = result.data;
+      try{
+        const result = await this.axios.get(
+          `${this.$root.store.domain_server}/${this.searchFor}s/${this.searchFor}Search/${this.searchQuery}`);
+        this.results = result.data;
+      }catch(err){
+        
+      }
     }
   },
+
   created(){
     this.searchTypes = this.$root.store.searchTypes;
   }
