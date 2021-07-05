@@ -1,18 +1,8 @@
 <template>
   <div class="game-preview">
     <div :title="id" class="game-title">
-      <b>Game Id:</b> {{ id }}
     </div>
-    <!-- <b-card-group deck> -->
-      <!-- <b-card header="Card with list group"> -->
-        <b-list-group>
-          <b-list-group-item >host: {{ hostTeam }}</b-list-group-item> <br>
-          <b-list-group-item >guest: {{ guestTeam }}</b-list-group-item><br>
-          <b-list-group-item >date: {{ date }}</b-list-group-item><br>
-          <b-list-group-item >time: {{ hour }}</b-list-group-item><br>
-        </b-list-group>
-      <!-- </b-card> -->
-    <!-- </b-card-group> -->
+
   </div>
 </template>
 
@@ -20,11 +10,15 @@
 export default {
   name: "GamePreview",
   props: {
-      id: {
-        type: Number,
+      date: {
+        type: String,
         required: true
       },
-      hostTeam: {
+      time: {
+        type: String,
+        required: true
+      },
+      homeTeam: {
         type: String,
         required: true
       },
@@ -32,14 +26,10 @@ export default {
         type: String,
         required: true
       },
-      date: {
+      stadium: {
         type: String,
         required: true
       },
-      hour: {
-        type: String,
-        required: true
-      }
   }, 
   mounted(){
     console.log("game preview mounted")

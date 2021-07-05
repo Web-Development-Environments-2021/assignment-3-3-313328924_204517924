@@ -21,29 +21,7 @@
         </div>
         <br>
     </div>
-      <!-- <div>
-    <button v-on:click="comp()">click</button>
-    {{ comp }}
-    <div class="grid-container">
-      <div class="grid-item">
-        <todoList
-          :initialTasks="initial_tasks"
-          bgColor="background-color:yellow"
-        ></todoList>
-        <todoList
-          :initialTasks="initial_tasks2"
-          bgColor="background-color:red"
-        ></todoList>
-        <todoList
-          :initialTasks="initial_tasks3"
-          bgColor="background-color:blue"
-        ></todoList>
-      </div>
-      <div class="grid-item" style="text-align: center">
-        <img id="meme" src="./assets/meme.jpg" />
-      </div>
-    </div>
-  </div> -->
+
 </template>
 
 <script>
@@ -61,7 +39,9 @@ export default {
         };
     },
     methods:{
+      showActivity(gameId){
 
+      },
     },
     async created(){
         const seperatedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/pastAndFutureGames`);

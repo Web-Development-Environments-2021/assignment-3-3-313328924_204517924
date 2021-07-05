@@ -30,6 +30,12 @@ const routes = [{
         component: () =>
             import ("./pages/LeagueManagment")
     },
+    // {
+    //     path: "/table",
+    //     name: "table",
+    //     component: () =>
+    //         import ("./pages/table")
+    // },
     {
         path: "/LeagueFixtures",
         name: "LeagueFixtures",
@@ -37,16 +43,16 @@ const routes = [{
             import ("./pages/LeagueFixtures")
     },
     {
-      path: "/PlayerCard/:playerId",
-      name: "PlayerCard",
-      component: () =>
-        import("./pages/PlayerCard")
+        path: "/PlayerCard/:playerId",
+        name: "PlayerCard",
+        component: () =>
+            import ("./pages/PlayerCard")
     },
     {
-      path: "/TeamCard/:teamId",
-      name: "TeamCard",
-      component: () =>
-        import("./pages/TeamCard")
+        path: "/TeamCard/:teamId",
+        name: "TeamCard",
+        component: () =>
+            import ("./pages/TeamCard")
     },
     {
         path: "*",

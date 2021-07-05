@@ -9,6 +9,7 @@
         <b-nav-item :to="{ name: 'LeagueFixtures' }">League Fixture</b-nav-item>
         <!-- add v-if for this option -->
         <b-nav-item :to="{ name: 'LeagueManagment' }">League Managment</b-nav-item>
+        <b-nav-item :to="{ name: 'table' }">Games</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
