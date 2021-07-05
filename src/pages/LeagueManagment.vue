@@ -1,17 +1,20 @@
 <template>
     <div>
-        {{games}}
+        <h1>Past Games</h1><br>
+        {{pastGames}}
         <br>
-        {{activity}}
+        <h1>UpComing Games</h1><br>
+        {{upComingGames}}
     </div>
 </template>
 
 <script>
 export default {
+    name:"LeagueManagment",
     data(){
         return{
-            games: [],
-            activity:[]
+            pastGames: [],
+            upComingGames: [],
 
         };
     },
@@ -19,11 +22,9 @@ export default {
 
     },
     async created(){
-        const gameAndActivity = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/getAllGames`);
-        // console.log(gameAndActivity.data)
-        // this.games = gameAndActivity;
-        this.games = gameAndActivity.data.game;
-        this.activity = gameAndActivity.data.activity;
+        const seperatedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/pastAndFutureGames`);
+        this.pastGames = seperatedGames.data.pastGames;
+        this.upComingGames = seperatedGames.data.nextGames;
     }
 }
 </script>
