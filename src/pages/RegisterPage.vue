@@ -114,12 +114,22 @@
         </b-form-invalid-feedback>
         <b-form-text v-else-if="$v.form.password.$error" text-variant="info">
           Your password should be <strong>strong</strong>. <br />
-          For that, your password should be also:
+          For that, your password should: {{passwordError}}
         </b-form-text>
         <b-form-invalid-feedback
           v-if="$v.form.password.required && !$v.form.password.length"
         >
           Have length between 5-10 characters long
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="$v.form.password.required && !$v.form.password.containsNumber"
+        >
+          Contains at least one number
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="$v.form.password.required && !$v.form.password.containsSpecial"
+        >
+          Contains at least one special character
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -216,7 +226,8 @@ export default {
         confirmedPassword: "",
         email: "",
         image:"",
-        submitError: undefined
+        submitError: undefined,
+        passwordError:""
       },
       countries: [{ value: null, text: "", disabled: true }],
       errors: [],

@@ -1,12 +1,14 @@
 <template>
     <div>
-        <h3>{{type}}s found:</h3>
-        
+        <!-- <div v-if="!haveSearchResults">
+            <h3><strong>No such {{type}}</strong></h3>
+        </div> -->
         <div v-for="(result, index) in results" :key="index">
+            <h3>{{type}}s found:</h3>
             <component 
-            :is="childComponent"
+            :is="createChildComponentString"
             :data="results[index]"
-            ></component>   
+            ></component> 
         </div>
         <div></div>
     </div>
@@ -15,22 +17,14 @@
 <script>
 
 export default {
-    components:{
-        // PlayerPreview: PlayerPreview,
-        // TeamPreview: TeamPreview   
-    },
     props: {type: String, results: Array},
-    data(){
-        return{
-            childComponent: ""
-        }
-    },
-    methods: {
-        
+    computed: {
+        createChildComponentString(){
+            return this.type.charAt(0).toUpperCase() + this.type.slice(1) + "Preview";
+        },
     },
     created() {
-      this.childComponent = this.type.charAt(0).toUpperCase() + this.type.slice(1) + "Preview";
-      console.log(this.childComponent);  
+        this.results = [];
     },
 
 }

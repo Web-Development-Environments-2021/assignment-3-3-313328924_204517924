@@ -1,6 +1,12 @@
 <template>
     <div>
-     {{id}}, {{name}}, {{foundation}}   
+        {{id}}, {{name}}, {{foundation}} 
+        <span>
+            <AddFavorite
+            :type="'Teams'"
+            :id="id"
+            ></AddFavorite>  
+        </span>
     </div>
 </template>
 

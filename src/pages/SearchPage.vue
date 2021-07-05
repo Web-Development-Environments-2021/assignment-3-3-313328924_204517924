@@ -10,19 +10,22 @@
     <b-form-group label="Button style radios" v-slot="{ ariaDescribedby }">
       <b-form-radio-group
         id="btn-radios-1"
-        v-model="searchFor"
+        v-model="type"
         :options="options"
         :aria-describedby="ariaDescribedby"
         name="radios-btn-default"
         buttons
+        @change="resetQuery"
       ></b-form-radio-group>
     </b-form-group>
       <br/>
       Your search Query: {{ searchQuery }}
-      <SearchResults 
-        :type="searchFor"
+      <SearchResults
+        v-if="hasResults" 
+        :type="type"
         :results="results"
       ></SearchResults>
+      <h3 v-else><strong>No Such {{type}}</strong></h3>
       
   </div>
 </template>
@@ -38,25 +41,31 @@ export default {
     return {
       searchQuery:"",
       results: [],
-      searchFor: "player",
+      type: "player",
       options: [
           { text: 'Players', value: 'player' },
           { text: 'Teams', value: 'team' },
-      ]
+      ],
+      hasResults: true
     };
   },
   methods: {
     async getResults(){
       try{
+        this.hasResults = true;
         const result = await this.axios.get(
-          `${this.$root.store.domain_server}/${this.searchFor}s/${this.searchFor}Search/${this.searchQuery}`);
+          `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
         this.results = result.data;
       }catch(err){
-        
+        this.hasResults = false;
       }
+    },
+    resetQuery(){
+      this.hasResults = true
+      // this.searchQuery = "";
+      this.results = [];
     }
   },
-
   created(){
     this.searchTypes = this.$root.store.searchTypes;
   }

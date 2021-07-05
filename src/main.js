@@ -17,6 +17,9 @@ Vue.component("TeamPreview", TeamPreview);
 import AddFavorite from './components/AddFavorite.vue';
 Vue.component("AddFavorite", AddFavorite);
 
+import VueCookies from 'vue-cookies';
+Vue.use(VueCookies);
+
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -81,17 +84,17 @@ const shared_data = {
     domain_server: "http://localhost:3000",
 
     // username: localStorage.username,
-    username: "",
+    username: sessionStorage.username,
     searchTypes: ["team"], //our app allows search for teams and players
 
     login(username) {
-        localStorage.setItem("username", username);
+        sessionStorage.setItem("username", username);
         this.username = username;
         console.log("login", this.username);
     },
     logout() {
         console.log("logout");
-        localStorage.removeItem("username");
+        sessionStorage.removeItem("username");
         this.username = undefined;
     }
 };
