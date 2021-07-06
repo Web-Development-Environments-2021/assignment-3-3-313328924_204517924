@@ -14,6 +14,8 @@ import PlayerPreview from './components/PlayerPreview';
 Vue.component("PlayerPreview", PlayerPreview);
 import TeamPreview from './components/TeamPreview.vue';
 Vue.component("TeamPreview", TeamPreview);
+import GamePreview from './components/GamePreview.vue';
+Vue.component("GamePreview", GamePreview);
 import AddFavorite from './components/AddFavorite.vue';
 Vue.component("AddFavorite", AddFavorite);
 
@@ -35,7 +37,7 @@ import {
     ToastPlugin,
     LayoutPlugin,
     InputGroupPlugin,
-    FormRadioPlugin 
+    FormRadioPlugin
 } from "bootstrap-vue";
 [
     FormGroupPlugin,
@@ -49,7 +51,7 @@ import {
     ToastPlugin,
     LayoutPlugin,
     InputGroupPlugin,
-    FormRadioPlugin 
+    FormRadioPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

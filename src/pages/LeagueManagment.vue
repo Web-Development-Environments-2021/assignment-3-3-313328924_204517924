@@ -1,7 +1,7 @@
 <template>
     <div>
-            <br> <br> 
-        <b-button type="submit" @click="sortGames">Sort Games</b-button> 
+        <br> <br> 
+        <b-button type="submit" @click="sortGames">Sort Games</b-button>
         <h1>Add game</h1> <br>
     <b-form>
       <b-form-group
@@ -88,8 +88,10 @@
         ></b-form-input>
       </b-form-group> 
     </b-form> 
-    <b-button type="submit" @click="updateGame">Update Game</b-button>   
-        <!-- <br><br>
+    <b-button type="submit" @click="updateGame">Update Game</b-button>  
+    <b-button type="submit" @click="resetUpdate">Reset</b-button> <br>
+    <h3 v-if="updateError">no such game</h3>
+            <!-- <br><br>
         <input
         type="text"
         v-model="sortParam"
@@ -107,38 +109,32 @@
                 buttons
             ></b-form-radio-group>
         </b-form-group> -->
+        <span>
         <h1>Past Games</h1><br>
-        <div v-if="pastGames.length ==0">
-            <h1>No game found</h1>
-        </div>
-        <div v-else>
-            <span>
-                {{pastGames}}
-            </span>
-        </div>
+            <SearchResults
+            v-if="hasPastGame" 
+            :type="'game'"
+            :results="pastGames"
+            ></SearchResults>
+        </span>
         <br>
-        <GameActivities
-            :game="1"
-        ></GameActivities>
-        <br><br>
-        <div v-if="upComingGames.length ==0">
-            <h1>No game found</h1>
-        </div>
-        <div v-else>
-            <span>
-                {{upComingGames}}
-            </span>
-        </div>
-        <br>
+        <span>
+        <h1>Upcomoing Games</h1><br>
+            <SearchResults
+            v-if="hasNextGame" 
+            :type="'game'"
+            :results="upComingGames"
+            ></SearchResults>
+        </span>
     </div>
 
 </template>
 
 <script>
-import GameActivities from '../components/GameActivities.vue';
+import SearchResults from '../components/SearchResults.vue';
 export default {
     components:{
-        GameActivities: GameActivities 
+        SearchResults: SearchResults 
   },
     name:"LeagueManagment",
     data(){
@@ -163,7 +159,9 @@ export default {
                 gameId: "",
                 score: "",
             },
-
+            updateError: false,
+            hasPastGame : true,
+            hasNextGame : true,
         };
     },
     methods:{
@@ -184,17 +182,39 @@ export default {
                 stadium:this.gameForm.stadium,
                 referee:this.gameForm.referee,
             },{withCredentials: true});
+            this.resetGame();
+        },
+        resetGame(){
+          this.gameForm.date = "";
+          this.gameForm.time = "";
+          this.gameForm.home_team = "";
+          this.gameForm.away_team = "";
+          this.gameForm.stadium = "";
+          this.gameForm.referee = "";
         },
         async updateGame(){
-            await this.axios.put(`${this.$root.store.domain_server}/leagueManagement/updateGame/${this.updateForm.gameId}`,{
+          try{
+             await this.axios.put(`${this.$root.store.domain_server}/leagueManagement/updateGame/${this.updateForm.gameId}`,{
                 score:this.updateForm.score,
-            },{withCredentials: true});
-      }
+            },{withCredentials: true});           
+          }catch(err){
+              this.updateError = true;
+          }
+      },
+      resetUpdate(){
+        this.updateError = false;
+        this.updateForm.gameId = "";
+        this.updateForm.score = "";
+      },
     },
     async created(){
         const seperatedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/pastAndFutureGames`);
         this.pastGames = seperatedGames.data.pastGames;
+        if(this.pastGames.length === 0)
+            hasPastGame = false;
         this.upComingGames = seperatedGames.data.nextGames;
+        if(this.upComingGames.length === 0)
+            hasNextGame = false;
     }
 }
 </script>
