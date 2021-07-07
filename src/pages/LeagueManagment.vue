@@ -1,132 +1,70 @@
 <template>
     <div>
-        <br> <br> 
-        <b-button type="submit" @click="sortGames">Sort Games</b-button>
-        <h1>Add game</h1> <br>
-    <b-form>
-      <b-form-group
-        id="input-group-1"
-        label="Date:"
-        label-for="input-1"
-      >
-        <b-form-input
-          id="input-1"
-          v-model="gameForm.date"
-          type="string"
-          placeholder="Enter date"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Time" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="gameForm.time"
-          placeholder="Enter time"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-3" label="Home team:" label-for="input-3">
-        <b-form-input
-          id="input-3"
-          v-model="gameForm.home_team"
-          placeholder="Enter home team"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-4" label="Gust team:" label-for="input-4" >
-        <b-form-input
-          id="input-4"
-          v-model="gameForm.away_team"
-          placeholder="Enter gust team"
-          required
-        >
-        </b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-4" label="Stadium:" label-for="input-4" >
-        <b-form-input
-          id="input-4"
-          v-model="gameForm.stadium"
-          placeholder="Enter stadium"
-          required
-        >
-        </b-form-input>
-      </b-form-group>
-      <b-form-group id="input-group-6" label="Referee:" label-for="input-6" >
-        <b-form-input
-          id="input-6"
-          v-model="gameForm.referee"
-          placeholder="Enter referee"
-          required
-        >
-        </b-form-input>
-      </b-form-group>
-
-      <b-button type="submit" @click="addGame">Add Game</b-button>
-    </b-form>
+      <b-container class="bv-example-row">
+        <b-row>
+          <b-col><br><br>
+             <router-link :to="{name: 'AddGame'}">
+               <div>
+                <b-card
+                  title="Add match"
+                  img-src="https://cdn.vox-cdn.com/thumbor/kdUXeIdF99iDYkUh_4TeI-kAC9o=/0x0:4775x3091/1200x800/filters:focal(2006x1164:2770x1928)/cdn.vox-cdn.com/uploads/chorus_image/image/69239730/1303177487.0.jpg"
+                  img-alt="Image"
+                  img-top
+                  tag="article"
+                  style="max-width: 20rem;"
+                  class="mb-2"
+                >
+                  <b-card-text>
+                    Insert new match
+                  </b-card-text>
+                </b-card>
+              </div>
+             </router-link>
+    </b-col>
+          <b-col><br><br>
+          <div>
+            <b-card
+              title="Sort match"
+              img-src="https://cdn.vox-cdn.com/thumbor/kdUXeIdF99iDYkUh_4TeI-kAC9o=/0x0:4775x3091/1200x800/filters:focal(2006x1164:2770x1928)/cdn.vox-cdn.com/uploads/chorus_image/image/69239730/1303177487.0.jpg"
+              img-alt="Image"
+              img-top
+              tag="article"
+              style="max-width: 20rem;"
+              class="mb-2"
+            >
+              <b-card-text>
+                Sort match by:
+              </b-card-text>
+              <b-container class="bv-example-row">
+                <b-row>
+                  <b-col><b-button type="submit" @click="sortGames(sortDate)">Date</b-button></b-col>
+                  <b-col><b-button type="submit" @click="sortGames(sortTeam)">Team</b-button></b-col>
+                </b-row>
+              </b-container>
+            </b-card>
+          </div>
+            </b-col>
+        </b-row>
+      </b-container>
     <br>
-    <h1>Update game</h1>
-    <b-form>
-      <b-form-group id="input-group-2" label="Game id" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="updateForm.gameId"
-          placeholder="Enter Game id"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-3" label="Score:" label-for="input-3">
-        <b-form-input
-          id="input-3"
-          v-model="updateForm.score"
-          placeholder="Enter score"
-          required
-        ></b-form-input>
-      </b-form-group> 
-    </b-form> 
-    <b-button type="submit" @click="updateGame">Update Game</b-button>  
-    <b-button type="submit" @click="resetUpdate">Reset</b-button> <br>
-    <h3 v-if="updateError">no such game</h3>
-            <!-- <br><br>
-        <input
-        type="text"
-        v-model="sortParam"
-        placeholder="A value by which game will sort"
-        />
-        <button @click="sortGames">sort games</button>
-        <br><br>
-        <b-form-group label="Sort games by:" v-slot="{ ariaDescribedby }">
-            <b-form-radio-group
-                id="btn-radios-1"
-                v-model="searchFor"
-                :options="options"
-                :aria-describedby="ariaDescribedby"
-                name="radios-btn-default"
-                buttons
-            ></b-form-radio-group>
-        </b-form-group> -->
-        <span>
-        <h1>Past Games</h1><br>
-            <SearchResults
-            v-if="hasPastGame" 
-            :type="'game'"
-            :results="pastGames"
-            ></SearchResults>
-        </span>
-        <br>
-        <span>
-        <h1>Upcomoing Games</h1><br>
-            <SearchResults
-            v-if="hasNextGame" 
-            :type="'game'"
-            :results="upComingGames"
-            ></SearchResults>
-        </span>
-    </div>
+    <span>
+    <h1>Past Games</h1><br>
+        <SearchResults :key="componentKeyPast"
+        v-if="hasPastGame" 
+        :type="'game'"
+        :results="pastGames"
+        ></SearchResults>
+    </span>
+    <br>
+    <span>
+    <h1>Upcomoing Games</h1><br>
+        <SearchResults :key="componentKeyNext" 
+        v-if="hasNextGame" 
+        :type="'game'"
+        :results="upComingGames"
+        ></SearchResults>
+    </span>
+  </div>
 
 </template>
 
@@ -139,73 +77,34 @@ export default {
     name:"LeagueManagment",
     data(){
         return{
+            componentKeyPast:0,
+            componentKeyNext:0,
             pastGames: [],
             upComingGames: [],
-            sortParam: "home_team",
+            sortDate: "date",
+            sortTeam: "home_team",
             searchFor: "date",
              options: [
             { text: 'Date', value: 'date' },
             { text: 'Teams', value: 'team' },
             ],
-            gameForm: {
-                date: "",
-                time: "",
-                home_team: "",
-                away_team: "",
-                stadium: "",
-                referee: "",
-            },
-            updateForm: {
-                gameId: "",
-                score: "",
-            },
-            updateError: false,
             hasPastGame : true,
             hasNextGame : true,
         };
     },
     methods:{
+      forceRerender() {
+        this.componentKeyPast += 1;
+        this.componentKeyNext += 1;
+      },
         async sortGames(value){
             // get sorted table
-            const sortedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/getAllGamesSorted/${this.sortParam}`);
+            const sortedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/getAllGamesSorted/${value}`);
             // update the post and upcomoing data with sorted
             this.pastGames = sortedGames.data.pastGames;
             this.upComingGames = sortedGames.data.nextGames;
-            this.sortParam = "";
+            this.forceRerender();
         },
-        async addGame(){
-            await this.axios.post(`${this.$root.store.domain_server}/leagueManagement/addGame`,{
-                date:this.gameForm.date,
-                time:this.gameForm.time,
-                home_team:this.gameForm.home_team,
-                away_team:this.gameForm.away_team,
-                stadium:this.gameForm.stadium,
-                referee:this.gameForm.referee,
-            },{withCredentials: true});
-            this.resetGame();
-        },
-        resetGame(){
-          this.gameForm.date = "";
-          this.gameForm.time = "";
-          this.gameForm.home_team = "";
-          this.gameForm.away_team = "";
-          this.gameForm.stadium = "";
-          this.gameForm.referee = "";
-        },
-        async updateGame(){
-          try{
-             await this.axios.put(`${this.$root.store.domain_server}/leagueManagement/updateGame/${this.updateForm.gameId}`,{
-                score:this.updateForm.score,
-            },{withCredentials: true});           
-          }catch(err){
-              this.updateError = true;
-          }
-      },
-      resetUpdate(){
-        this.updateError = false;
-        this.updateForm.gameId = "";
-        this.updateForm.score = "";
-      },
     },
     async created(){
         const seperatedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/pastAndFutureGames`);
