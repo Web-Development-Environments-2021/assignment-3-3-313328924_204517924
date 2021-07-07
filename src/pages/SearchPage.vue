@@ -25,7 +25,7 @@
         :type="type"
         :results="results"
       ></SearchResults>
-      <h3 v-else><strong>No Such {{type}}</strong></h3>
+      <h3 v-else><strong>Couldn't find such {{type}}</strong></h3>
       
   </div>
 </template>

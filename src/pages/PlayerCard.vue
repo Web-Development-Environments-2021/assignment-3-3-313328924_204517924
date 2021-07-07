@@ -3,6 +3,7 @@
         {{id}}, {{name}}, {{commonName}}
         <span>
             <AddFavorite
+            v-if="this.$root.store.username"
             :type="'Players'"
             :id="id"
             ></AddFavorite>

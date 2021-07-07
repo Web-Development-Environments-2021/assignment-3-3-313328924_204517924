@@ -99,6 +99,18 @@ const shared_data = {
     }
 };
 // Vue.prototype.$root.store = shared_data;
+router.beforeEach((to, from, next) => {
+    if(shared_data.username){
+      const cookie = window.$cookies.get('session');
+      console.log(cookie)
+      if(!cookie && shared_data.domain == "http://localhost:3000/"){
+        shared_data.logout();
+        next({name: 'main'});
+      }
+    }
+    next();
+  });
+  
 
 new Vue({
     router,
