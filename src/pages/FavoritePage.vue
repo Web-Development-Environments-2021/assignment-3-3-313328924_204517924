@@ -12,11 +12,11 @@
             ></b-form-radio-group>
         </b-form-group>
         <div>
-            <SearchResults
+            <PreviewWrapper
             v-if="favorites.length > 0"
             :type="type"
             :results="favorites"
-            ></SearchResults>
+            ></PreviewWrapper>
             <div 
             v-else>
                 <h3><strong>There are no favorite {{type}}s</strong></h3>
@@ -26,11 +26,7 @@
     </div>
 </template>
 <script>
-import SearchResults from '../components/SearchResults.vue';
 export default {
-    components:{
-        SearchResults: SearchResults 
-    },
     data(){
         return{
             favorites: [],

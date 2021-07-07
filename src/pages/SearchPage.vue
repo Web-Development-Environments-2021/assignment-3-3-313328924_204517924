@@ -20,23 +20,19 @@
     </b-form-group>
       <br/>
       Your search Query: {{ searchQuery }}
-      <SearchResults
+      <PreviewWrapper
         v-if="hasResults" 
         :type="type"
         :results="results"
-      ></SearchResults>
+      ></PreviewWrapper>
       <h3 v-else><strong>Couldn't find such {{type}}</strong></h3>
       
   </div>
 </template>
 
 <script>
-import SearchResults from '../components/SearchResults.vue';
 
 export default {
-  components:{
-    SearchResults: SearchResults 
-  },
  data() {
     return {
       searchQuery:"",
