@@ -3,8 +3,8 @@
         <!-- <div v-if="!haveSearchResults">
             <h3><strong>No such {{type}}</strong></h3>
         </div> -->
+        <h3>{{type}}s found:</h3>
         <div v-for="(result, index) in results" :key="index">
-            <h3>{{type}}s found:</h3>
             <component 
             :is="createChildComponentString"
             :data="results[index]"
@@ -20,11 +20,11 @@ export default {
     props: {type: String, results: Array},
     computed: {
         createChildComponentString(){
-            return this.type.charAt(0).toUpperCase() + this.type.slice(1) + "Preview";
+            let type = this.type
+            return type.charAt(0).toUpperCase() + type.slice(1) + "Preview";
         },
     },
     created() {
-        this.results = [];
     },
 
 }

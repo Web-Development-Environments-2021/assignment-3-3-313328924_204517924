@@ -18,9 +18,9 @@
         <b-navbar-nav class="ml-auto" v-else>
         <b-nav-item-dropdown right>
           <template #button-content>
-            User
+            <strong>{{$root.store.username}}</strong>
           </template>
-          <b-dropdown-item href="#">Favorites</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'Favorite' }">Favorites</b-dropdown-item>
           <b-dropdown-item href="#" @click="Logout">Log Out</b-dropdown-item>
         </b-nav-item-dropdown>
         </b-navbar-nav>
