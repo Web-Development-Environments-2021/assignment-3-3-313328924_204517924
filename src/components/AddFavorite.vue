@@ -15,7 +15,7 @@
 
 <script>
 export default {
-    props:{type: String, id:String},
+    props:{type: String, id:Number},
     data(){
         return{
             isFavorite: false
@@ -26,7 +26,7 @@ export default {
             console.log("type is "+ this.type);
             try{
                 const res = await this.axios.post(`${this.$root.store.domain_server}/users/addFavorite${this.type}`, {
-                    id: parseInt(this.id)
+                    id: this.id
                     },
                     { withCredentials: true }
                 );

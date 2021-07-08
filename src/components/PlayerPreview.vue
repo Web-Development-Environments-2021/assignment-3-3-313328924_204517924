@@ -1,5 +1,5 @@
 <template>
-    <div>
+     <b-container fluid="sm">
         <b-card
         :title="name"
         :img-src="image"
@@ -14,7 +14,7 @@
             <b-card-body>
                 <b-card-text class="card-txt">
                     Team: <br>
-                    <strong>{{teamName}}</strong> <br><br>
+                    <strong>{{teamName}}</strong><br><br>
                     Position: <br>
                     <strong>{{position}}</strong>
                 </b-card-text>
@@ -25,7 +25,7 @@
                 </router-link>
             </b-button>
         </b-card>   
-    </div>
+    </b-container>
 </template>
 <script>
 export default {

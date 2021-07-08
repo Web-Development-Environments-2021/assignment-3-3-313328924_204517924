@@ -43,6 +43,7 @@
     </div>
         <PreviewWrapper  
         v-if="hasNextGame" 
+        tag="div"        
         :type="'game'"
         :results="nextGame"
         ></PreviewWrapper>
