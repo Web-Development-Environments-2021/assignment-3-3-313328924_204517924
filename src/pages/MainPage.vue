@@ -5,7 +5,7 @@
       <b-row align-h="center">
         <b-col align-h="center"><LeagueInfo></LeagueInfo></b-col>
         <b-col align-h="center">
-          <LoginPage v-if="!$root.store.username"></LoginPage>
+          <LoginPage v-on:login="alartLogin" v-if="!$root.store.username"></LoginPage>
           <FavoriteGames v-else></FavoriteGames>
         </b-col>
       </b-row>
@@ -22,6 +22,11 @@ export default {
     LeagueInfo, 
     LoginPage, 
     FavoriteGames
+  },
+  methods:{
+    alartLogin(userName){
+      this.$emit("changeUser",userName);
+    }
   }
 };
 </script>

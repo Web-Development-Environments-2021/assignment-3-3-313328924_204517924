@@ -1,6 +1,6 @@
 <template>
 
-    <b-container fluid>    
+    <b-container >    
         <b-row>
             <component :is="tag" v-for="(result, index) in results" :key="index">
                 <component 

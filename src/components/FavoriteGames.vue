@@ -4,13 +4,13 @@
       <h1 align-h="center">Favorite &#10084;&#65039; matchs</h1> <br>
           <PreviewWrapper 
           v-if="hasFavorites" 
+          tag="div"
           :type="'game'"
           :results="games"
           ></PreviewWrapper>
           <b-alert v-else show>
             <h3>No favorite matchs</h3>
           </b-alert>
-          
     </b-row>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
   },
   async created(){
     try{
-      const res = await this.axios.get(`${this.$root.store.domain_server}/users/getFavoritesGames`,
+      const res = await this.axios.get(`${this.$root.store.domain_server}/users/getFavoriteGames`,
       {withCredentials: true});
       this.games = res.data;
       console.log(this.games);
