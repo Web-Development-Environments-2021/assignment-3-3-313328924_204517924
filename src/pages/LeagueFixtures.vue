@@ -14,7 +14,8 @@
     <h1>Upcomoing Matchs</h1><br>
         <PreviewWrapper  
         v-if="hasNextGame" 
-        :type="'game'"
+        tag="div"
+        type="game"
         :results="upComingGames"
         ></PreviewWrapper>
     </span>

@@ -29,10 +29,11 @@
           <br/>
       <b-row class="justify-content-md-center" >
         <PreviewWrapper
-        class="results"
         v-if="hasResults" 
+        tag="b-col"
         :type="type"
         :results="results"
+        class="results"
         ></PreviewWrapper>
         <h3 v-else><strong>Couldn't find such {{type}}</strong></h3>
       </b-row>

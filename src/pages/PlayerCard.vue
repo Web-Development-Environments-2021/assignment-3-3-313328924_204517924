@@ -1,5 +1,4 @@
 <template>
-    <div>
         <b-container fluid="xl">
             <b-row align-h="center">
                 <h2>{{name}}'s Player Card </h2>
@@ -9,7 +8,7 @@
                     <b-img fluid-grow :src="image"></b-img>
                 </b-col>
                 <b-col align-self="center">
-                    <b-card title="Player Details:">
+                    <b-card title="Player Info:">
                         <b-card-text >
                             <b-list-group flush>
                                 <b-list-group-item>Full Name: {{name}}</b-list-group-item>
@@ -34,7 +33,6 @@
                 </b-col>
             </b-row>
         </b-container>
-    </div>
 </template>
 
 <script>
@@ -82,7 +80,7 @@ export default {
         }         
     },
     created(){
-        this.id = this.$route.params.playerId;
+        this.id = parseInt(this.$route.params.playerId);
         this.getPlayerDetails();
     }
 }
