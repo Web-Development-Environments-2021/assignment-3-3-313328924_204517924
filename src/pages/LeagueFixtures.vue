@@ -4,7 +4,8 @@
      <span>
     <h1>Past Matchs</h1><br>
         <PreviewWrapper 
-        v-if="hasPastGame" 
+        v-if="hasPastGame"
+        tag="div" 
         :type="'game'"
         :results="pastGames"
         ></PreviewWrapper>

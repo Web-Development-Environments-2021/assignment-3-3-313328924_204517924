@@ -62,7 +62,7 @@ export default {
   data(){
     return{
       isAdmin:false,
-      preview:true,
+      preview:false,
       gameId:"",
       game:{
         date:"",
