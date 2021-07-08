@@ -36,12 +36,18 @@ const routes = [{
         component: () =>
             import ("./pages/FavoritePage")
     },
-    // {
-    //     path: "/table",
-    //     name: "table",
-    //     component: () =>
-    //         import ("./pages/table")
-    // },
+    {
+        path: "/AddGame",
+        name: "AddGame",
+        component: () =>
+            import ("./pages/AddGame")
+    },
+    {
+        path: "/EditGame",
+        name: "EditGame",
+        component: () =>
+            import ("./pages/EditGame")
+    },
     {
         path: "/LeagueFixtures",
         name: "LeagueFixtures",
