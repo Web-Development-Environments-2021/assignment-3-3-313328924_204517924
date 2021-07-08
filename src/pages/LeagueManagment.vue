@@ -47,7 +47,8 @@
     <h1>Past Matchs</h1><br>
         <PreviewWrapper :key="componentKeyPast"
         v-if="hasPastGame" 
-        :type="'game'"
+        tag="div"
+        type="game"
         :results="pastGames"
         ></PreviewWrapper>
     </span>

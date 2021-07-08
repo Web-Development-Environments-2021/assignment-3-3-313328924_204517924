@@ -1,14 +1,33 @@
 <template>
-    <div>
-        
-        <span>
-            <AddFavorite
-            v-if="this.$root.store.username"
-            :type="'Teams'"
-            :id="id"
-            ></AddFavorite>  
-        </span>
-    </div>
+    <b-container fluid="lg">
+        <b-row align-h="center">
+            <h2>{{name}}'s Team Card </h2>
+        </b-row>
+        <b-row>
+            <b-col fluid align-self="stretch">
+                <b-img fluid-grow :src="logo"></b-img>
+            </b-col>
+            <b-col align-self="center">
+                <b-card title="Team Info:">
+                    <b-card-text >
+                        <b-list-group flush>
+                            <b-list-group-item>Team Name: {{name}}</b-list-group-item>
+                            <b-list-group-item>Short Code: {{shortcode}}</b-list-group-item>
+                            <b-list-group-item>Foundation: {{foundation}}</b-list-group-item>
+                        </b-list-group>
+                    </b-card-text>
+                    <template #footer>
+                        <AddFavorite
+                        v-if="$root.store.username"
+                        :type="'Teams'"
+                        :id="id"
+                        ></AddFavorite>
+                    </template>
+                </b-card>
+            </b-col>
+        </b-row>
+    </b-container>
+
 </template>
 
 <script>
@@ -29,7 +48,6 @@ export default {
         async getTeamFullDetails(){
             const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
             this.name = teamDetails.data.name;
-            console.log(teamDetails.data.name);
             this.shortcode = teamDetails.data.shortcode;
             this.foundation = teamDetails.data.foundation;
             this.logo = teamDetails.data.logo;

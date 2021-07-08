@@ -1,20 +1,22 @@
 <template>
-    <div>
-        
-        <div v-for="(result, index) in results" :key="index">
-            <component 
-            :is="createChildComponentString"
-            :data="results[index]"
-            ></component> 
-        </div>
-        <div></div>
-    </div>
+
+    <b-container fluid>    
+        <b-row>
+            <component :is="tag" v-for="(result, index) in results" :key="index">
+                <component 
+                :is="createChildComponentString"
+                :data="results[index]"
+                ></component> 
+            </component>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
 
 export default {
-    props: {type: String, results: Array},
+    props: {tag:String, type: String, results: Array},
+
     computed: {
         createChildComponentString(){
             let type = this.type
