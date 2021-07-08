@@ -26,8 +26,8 @@
               <b-list-group-item v-if="game.score">Score: {{game.score}}</b-list-group-item>
             </b-list-group><br>
           </b-card>
-            <b-button :pressed.sync="myToggle" variant="primary" @click="showActivity">Show Game activities</b-button>
-            <router-link :to="{name: 'EditGame', params:{gameId:gameId}}">
+            <b-button :pressed.sync="myToggle" variant="primary" @click="showActivity">Show match activities</b-button>
+            <router-link v-if="isAdmin" :to="{name: 'EditGame', params:{gameId:gameId}}">
                 <b-button variant="danger">Edit match</b-button>
             </router-link>
             <AddFavorite
@@ -56,6 +56,7 @@ export default {
   props: {data: Object},
   data(){
     return{
+      isAdmin:false,
       gameId:"",
       game:{
         date:"",
@@ -80,12 +81,6 @@ export default {
     methods:{
       async showActivity(){
 
-        // try{
-        //   console.log(this.gameId);
-        //   res = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/activity/${gameId}`);
-        // }catch(err){
-
-        // }
       }
     }
 };

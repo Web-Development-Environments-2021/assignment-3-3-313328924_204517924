@@ -1,5 +1,32 @@
 <template>
-    <div class="league-preview">
+    <div>
+      <!-- <div>
+        <b-card-group deck>
+          <div class="league-preview">
+            <b-card
+            img-alt="Image"
+            tag="article"
+            style="max-width: 20rem;"
+            class="mb-2">
+            <b-card-title>{{leagueName}}</b-card-title>
+            <b-card-text>
+              Season: {{ season }}
+              <br/>
+              Stage: {{ stage }} 
+            </b-card-text>
+            </b-card>
+          </div>
+
+          <b-card title="Next Match">
+            <SearchResults  
+            v-if="hasNextGame" 
+            :type="'game'"
+            :results="nextGame"
+            ></SearchResults>
+          </b-card>
+        </b-card-group>
+      </div> -->
+      <div class="league-preview">
       <b-card
       img-alt="Image"
       tag="article"
@@ -10,17 +37,27 @@
       <b-card-text>
         Season: {{ season }}
         <br/>
-        Stage: {{ stage }}
+        Stage: {{ stage }} 
       </b-card-text>
-      <b-button href="#" variant="primary">Go somewhere</b-button>
     </b-card>
+    </div>
+        <SearchResults  
+        v-if="hasNextGame" 
+        :type="'game'"
+        :results="nextGame"
+        ></SearchResults>
   </div>
 </template>
 
 <script>
+import SearchResults from './SearchResults.vue';
 export default {
+    components:{
+        SearchResults: SearchResults 
+  },
  data() {
     return {
+      hasNextGame: true,
       leagueName: "superliga", 
       season: "season", 
       stage: "stage",
@@ -31,11 +68,12 @@ export default {
     async getLeagueInfo(){
       try {
         const leagueInfo = await this.axios.get(`${this.$root.store.domain_server}/league/getDetails`);
-        console.log(leagueInfo);
         this.leagueName = leagueInfo.data.name;
         this.season = leagueInfo.data.season;
         this.stage = leagueInfo.data.stage;
         this.nextGame = leagueInfo.data.nextGame;
+        if(this.nextGame.length()===0)
+          hasNextGame = false;
       } catch (error) {
         console.log(error);
         
