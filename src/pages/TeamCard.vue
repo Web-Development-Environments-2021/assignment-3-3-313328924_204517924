@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{id}}, {{name}}, {{foundation}} 
+        
         <span>
             <AddFavorite
             v-if="this.$root.store.username"
