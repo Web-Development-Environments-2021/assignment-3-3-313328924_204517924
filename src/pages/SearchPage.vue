@@ -1,6 +1,6 @@
 <template>
   <div >
-    <b-container>
+    <b-container fluid="xl">
       <b-row class="justify-content-md-center">
         <h1 class="title">Sperliga Search Page</h1>
       </b-row>

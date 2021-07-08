@@ -39,7 +39,9 @@ import {
     ToastPlugin,
     LayoutPlugin,
     InputGroupPlugin,
-    FormRadioPlugin
+    FormRadioPlugin,
+    ImagePlugin,
+    ListGroupPlugin
 } from "bootstrap-vue";
 [
     FormGroupPlugin,
@@ -53,7 +55,9 @@ import {
     ToastPlugin,
     LayoutPlugin,
     InputGroupPlugin,
-    FormRadioPlugin
+    FormRadioPlugin,
+    ImagePlugin,
+    ListGroupPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

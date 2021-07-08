@@ -1,13 +1,22 @@
 <template>
     <div>
-        {{id}}, {{name}}, {{commonName}}
-        <span>
-            <AddFavorite
-            v-if="this.$root.store.username"
-            :type="'Players'"
-            :id="id"
-            ></AddFavorite>
-        </span> 
+        <b-container fluid="xl">
+            <b-row>
+                <b-col fluid align-self="stretch">
+                    <b-img fluid-grow :src="image"></b-img>
+                </b-col>
+                <b-col >
+                    
+                </b-col>
+            </b-row>
+            <span>
+                <AddFavorite
+                v-if="this.$root.store.username"
+                :type="'Players'"
+                :id="id"
+                ></AddFavorite>
+            </span> 
+        </b-container>
     </div>
 </template>
 
@@ -21,6 +30,7 @@ export default {
             id:0,
             name: "",
             commonName: "",
+            image: "",
             teamName: "",
             position: 0,
             nationality: "",
@@ -35,6 +45,7 @@ export default {
             try{
                 const playerDetails = await this.axios.get(`${this.$root.store.domain_server}/players/playerDetails/${this.id}`);
                 this.name = playerDetails.data.name;
+                this.image = playerDetails.data.image;
                 this.commonName = playerDetails.data.common_name;
                 this.teamName = playerDetails.data.team_name;
                 this.position = playerDetails.data.position;

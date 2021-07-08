@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <div v-for="(result, index) in results" :key="index">
             <component 
             :is="createChildComponentString"
