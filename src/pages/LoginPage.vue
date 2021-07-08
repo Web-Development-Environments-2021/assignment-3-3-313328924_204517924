@@ -112,7 +112,6 @@ export default {
         // console.log(response);
         // this.$root.loggedIn = true;
         this.$root.store.login(this.form.username);
-        this.$emit("login");
         this.$router.push("/").catch(()=>{});
       } catch (err) {
         console.log(err.response);

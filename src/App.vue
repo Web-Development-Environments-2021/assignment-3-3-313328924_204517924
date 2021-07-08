@@ -8,7 +8,7 @@
         <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
         <b-nav-item :to="{ name: 'LeagueFixtures' }">League Fixture</b-nav-item>
         <!-- add v-if for this option -->
-        <b-nav-item :key="action" v-if="isAdmin" v-on:changeUser="userName" :to="{ name: 'LeagueManagment' }">League Managment</b-nav-item>
+        <b-nav-item  v-if="checkIfAdmin" :to="{ name: 'LeagueManagment' }">League Managment</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
@@ -34,21 +34,18 @@ export default {
   name: "App",
   data(){
     return{
-      changeUser:0,
-      isAdmin:false,
+      // changeUser:0,
+      // isAdmin:false,
     }
   },
-<<<<<<< HEAD
-  // computed() {
-  //     if(this.$root.store.username === "AdminUser")
-  //     this.isAdmin = true;
-  // },
-=======
-  created(){
-      if(this.$root.store.username === "AdminUser")
-      this.isAdmin = true;
+  computed:{
+    checkIfAdmin(){
+    if(this.$root.store.username === "AdminUser")
+      return true;
+      else
+        return false;
+    }
   },
->>>>>>> d147a0ae3fb65af14a388a3e74ddc4648b45bfbd
   methods: {
     Logout() {
       try{
@@ -65,14 +62,6 @@ export default {
         this.$forceUpdate();
       });
     },
-    modifyUser(userName){
-      if(this.$root.store.username === "AdminUser")
-      this.isAdmin = true;
-      this.checkUser();
-    },
-    checkUser(){
-      this.changeUser += 1
-    }
   }
 };
 </script>
