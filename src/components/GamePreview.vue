@@ -35,7 +35,7 @@
             <!-- <router-link v-if="isAdmin" :to="{name: 'EditGame', params:{gameId:gameId}}">
                 <b-button  variant="danger">Edit match</b-button>
             </router-link> -->
-            <b-button  variant="danger">
+            <b-button v-if="isAdmin"  variant="danger">
               <router-link v-if="isAdmin" :to="{name: 'EditGame', params:{gameId:gameId}}">Edit match</router-link>
             </b-button>
             <b-button> 
