@@ -8,8 +8,7 @@
         <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
         <b-nav-item :to="{ name: 'LeagueFixtures' }">League Fixture</b-nav-item>
         <!-- add v-if for this option -->
-        <b-nav-item :to="{ name: 'LeagueManagment' }">League Managment</b-nav-item>
-        <!-- <b-nav-item :to="{ name: 'table' }">Games</b-nav-item> -->
+        <b-nav-item :key="action" v-if="isAdmin" :to="{ name: 'LeagueManagment' }">League Managment</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
@@ -33,12 +32,24 @@
 <script>
 export default {
   name: "App",
+  data(){
+    return{
+      changeUser:0,
+      isAdmin:false,
+    }
+  },
+  computed() {
+      if(this.$root.store.username === "AdminUser")
+      this.isAdmin = true;
+  },
   methods: {
     Logout() {
       try{
         const response = this.axios.post(`${this.$root.store.domain_server}/Logout`);
         this.$root.store.logout();
         this.$root.toast("Logout", "User logged out successfully", "success");
+        this.changeUser += 1
+        console.log(this.isAdmin)
       }catch(err){
         console.log(err);
       }

@@ -1,12 +1,16 @@
 <template>
   <div><br>
     <b-row align-h="center">
-      <h1 align-h="center">Favorite &#10084;&#65039; matchs</h1>
+      <h1 align-h="center">Favorite &#10084;&#65039; matchs</h1> <br>
           <PreviewWrapper 
           v-if="hasFavorites" 
           :type="'game'"
           :results="games"
           ></PreviewWrapper>
+          <b-alert v-else show>
+            <h3>No favorite matchs</h3>
+          </b-alert>
+          
     </b-row>
   </div>
 </template>
@@ -26,12 +30,19 @@ export default {
       {withCredentials: true});
       this.games = res.data;
       console.log(this.games);
-      if(this.games.length()===0)
+      if(this.games === " there are no favorites games")
         this.hasFavorites = false;
       else if(this.games.length()>=3)
         this.games = this.games.slice(0,3);
       else
         this.games = this.games.slice(0,this.games.length());
+      // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      // for (let i = 0; i<this.games.length;i++){
+      //   console.log(this.games[i]);
+      //   this.games[i].isPreviwe = true;
+      //   console.log(this.games[i].isPreviwe)
+      // }
+      // console.log(this.games);
     }catch(err){
 
     }

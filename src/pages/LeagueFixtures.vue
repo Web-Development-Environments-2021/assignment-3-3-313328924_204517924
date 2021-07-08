@@ -37,6 +37,7 @@ export default {
 
     },
     async created(){
+        console.log(this.$root.store.username);
         const seperatedGames = await this.axios.get(`${this.$root.store.domain_server}/leagueManagement/pastAndFutureGames`);
         this.pastGames = seperatedGames.data.pastGames;
         if(this.pastGames.length === 0)

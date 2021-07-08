@@ -4,7 +4,7 @@
   <b-row>
     <b-col>
       <div class="game-preview">
-          <div :title="id" class="game-title">
+          <div class="game-title">
           <b-card>
             <b-row>
               <b-col>
@@ -30,9 +30,9 @@
               Score: {{game.score}}
             </b-row>
           </b-card>
-            <b-button :pressed.sync="myToggle" variant="primary" @click="showActivity">Show match activities</b-button>
+            <b-button v-if="!preview" :pressed.sync="myToggle" variant="primary" @click="showActivity">Show match activities</b-button>
             <router-link v-if="isAdmin" :to="{name: 'EditGame', params:{gameId:gameId}}">
-                <b-button variant="danger">Edit match</b-button>
+                <b-button  variant="danger">Edit match</b-button>
             </router-link>
             <AddFavorite
             v-if="this.$root.store.username"
@@ -62,6 +62,7 @@ export default {
   data(){
     return{
       isAdmin:false,
+      preview:true,
       gameId:"",
       game:{
         date:"",
@@ -75,6 +76,11 @@ export default {
     }
   },
     created() {
+      if(this.$root.store.username==="AdminUser")
+        this.isAdmin = true;
+      // console.log(this.data.isPreviwe);
+      // if(!this.data.isPreviwe)
+      //   this.preview = false;
       this.gameId = this.data.game_id;
       this.game.date = this.data.date;
       this.game.time = this.data.time;

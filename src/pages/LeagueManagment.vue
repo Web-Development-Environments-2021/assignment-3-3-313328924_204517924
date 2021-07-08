@@ -105,9 +105,17 @@ export default {
         this.pastGames = seperatedGames.data.pastGames;
         if(this.pastGames.length === 0)
             hasPastGame = false;
+        // else
+        //   for (let i = 0; i<this.games.length();i++){
+        //     this.games[i].isPreviwe = false;
+        //   }
         this.upComingGames = seperatedGames.data.nextGames;
         if(this.upComingGames.length === 0)
             hasNextGame = false;
+        // else
+        //   for (let i = 0; i<this.games.length();i++){
+        //     this.games[i].isPreviwe = false;
+        //   }
     }
 }
 </script>
