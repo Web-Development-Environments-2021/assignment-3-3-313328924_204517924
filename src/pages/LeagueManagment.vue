@@ -56,7 +56,8 @@
     <span>
     <h1>Upcomoing Matchs</h1><br>
         <PreviewWrapper :key="componentKeyNext" 
-        v-if="hasNextGame" 
+        v-if="hasNextGame"
+        tag="div" 
         :type="'game'"
         :results="upComingGames"
         ></PreviewWrapper>
