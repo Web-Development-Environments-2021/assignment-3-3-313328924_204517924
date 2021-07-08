@@ -10,6 +10,8 @@ const router = new VueRouter({
     routes
 });
 
+import PreviewWrapper from './components/PreviewWrapper.vue';
+Vue.component("PreviewWrapper", PreviewWrapper);
 import PlayerPreview from './components/PlayerPreview';
 Vue.component("PlayerPreview", PlayerPreview);
 import TeamPreview from './components/TeamPreview.vue';

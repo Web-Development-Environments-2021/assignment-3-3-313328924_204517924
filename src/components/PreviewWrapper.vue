@@ -1,9 +1,5 @@
 <template>
     <div>
-        <!-- <div v-if="!haveSearchResults">
-            <h3><strong>No such {{type}}</strong></h3>
-        </div> -->
-        <h3>{{type}}s found:</h3>
         <div v-for="(result, index) in results" :key="index">
             <component 
             :is="createChildComponentString"
