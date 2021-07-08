@@ -1,51 +1,23 @@
 <template>
-    <div>
-      <!-- <div>
-        <b-card-group deck>
-          <div class="league-preview">
-            <b-card
-            img-alt="Image"
-            tag="article"
-            style="max-width: 20rem;"
-            class="mb-2">
-            <b-card-title>{{leagueName}}</b-card-title>
-            <b-card-text>
-              Season: {{ season }}
-              <br/>
-              Stage: {{ stage }} 
-            </b-card-text>
-            </b-card>
-          </div>
-
-          <b-card title="Next Match">
-            <SearchResults  
-            v-if="hasNextGame" 
-            :type="'game'"
-            :results="nextGame"
-            ></SearchResults>
-          </b-card>
-        </b-card-group>
-      </div> -->
+    <div><br>
+      <b-row align-h="center">
+      <h1>League information &#9917;</h1>
       <div class="league-preview">
-      <b-card
-      img-alt="Image"
-      tag="article"
-      style="max-width: 20rem;"
-      class="mb-2"
-    >
-      <b-card-title>{{leagueName}}</b-card-title>
-      <b-card-text>
-        Season: {{ season }}
-        <br/>
-        Stage: {{ stage }} 
-      </b-card-text>
-    </b-card>
+        <div class="league-title">{{leagueName}}</div>
+        <div class="league-content">
+            Season: {{ season }}
+            <br/>
+            Stage: {{ stage }} 
+        </div>
     </div>
+    </b-row>
+    <b-row align-h="center">
         <PreviewWrapper  
         v-if="hasNextGame" 
         :type="'game'"
         :results="nextGame"
         ></PreviewWrapper>
+    </b-row>
   </div>
 </template>
 
@@ -69,8 +41,8 @@ export default {
         this.season = leagueInfo.data.season;
         this.stage = leagueInfo.data.stage;
         this.nextGame = leagueInfo.data.nextGame;
-        if(this.nextGame.length()===0)
-          hasNextGame = false;
+        // if(this.nextGame.length()===0)
+        //   hasNextGame = false;
       } catch (error) {
         console.log(error);
         
@@ -87,8 +59,8 @@ export default {
 <style>
 .league-preview {
   display: inline-block;
-  width: 250px;
-  height: 200px;
+  width: 375px;
+  height: 100px;
   position: relative;
   margin: 10px 10px;
   border-style: solid;
@@ -100,12 +72,17 @@ export default {
 .league-preview .league-title {
   text-align: center;
   text-transform: uppercase;
+  font-family:fantasy;
   color:  rgb(111, 155, 197);
 }
 
 .league-preview .league-content {
   width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-family:fantasy;
   overflow: hidden;
 }
+
 
 </style>

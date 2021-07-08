@@ -1,54 +1,41 @@
 <template>
-  <div>
-    <GamePreview
-      v-for="g in games"
-      :id="g.id" 
-      :hostTeam="g.hostTeam" 
-      :guestTeam="g.guestTeam" 
-      :date="g.date" 
-      :hour="g.hour" 
-      :key="g.id"></GamePreview>
+  <div><br>
+    <b-row align-h="center">
+      <h1 align-h="center">Favorite &#10084;&#65039; matchs</h1>
+          <PreviewWrapper 
+          v-if="hasFavorites" 
+          :type="'game'"
+          :results="games"
+          ></PreviewWrapper>
+    </b-row>
   </div>
 </template>
 
 <script>
-import GamePreview from "./GamePreview.vue";
 export default {
-  name: "FavoriteGames",
-  components: {
-    GamePreview
-  }, 
+  name: "FavoriteGames", 
   data() {
     return {
+      hasFavorites:true,
       games: []
     };
   },
-  // computed:{
-  //   getFavoriteGames(){
-  //     this.games = 
-  //   }
-  // }
-  // methods: {
-  //   async updateGames(){
-  //     console.log("response");
-  //     try {
-  //       const response = await this.axios.get(
-  //         "http://localhost:3000/games/favoriteGames",
-  //       );
-  //       const games = response.data.games;
-  //       this.games = [];
-  //       this.games.push(...games);
-  //       console.log(response);
-  //     } catch (error) {
-  //       console.log("error in update games")
-  //       console.log(error);
-  //     }
-  //   }
-  // }, 
-  // mounted(){
-  //   console.log("favorite games mounted");
-  //   this.updateGames(); 
-  // }
+  async created(){
+    try{
+      const res = await this.axios.get(`${this.$root.store.domain_server}/users/getFavoritesGames`,
+      {withCredentials: true});
+      this.games = res.data;
+      console.log(this.games);
+      if(this.games.length()===0)
+        this.hasFavorites = false;
+      else if(this.games.length()>=3)
+        this.games = this.games.slice(0,3);
+      else
+        this.games = this.games.slice(0,this.games.length());
+    }catch(err){
+
+    }
+  },
 };
 </script>
 

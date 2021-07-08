@@ -2,9 +2,9 @@
   <div class="container">
     <h1 class="title">Main Page</h1>
     <b-container class="bv-example-row">
-      <b-row>
-        <b-col><LeagueInfo></LeagueInfo></b-col>
-        <b-col>
+      <b-row align-h="center">
+        <b-col align-h="center"><LeagueInfo></LeagueInfo></b-col>
+        <b-col align-h="center">
           <LoginPage v-if="!$root.store.username"></LoginPage>
           <FavoriteGames v-else></FavoriteGames>
         </b-col>
@@ -37,5 +37,10 @@ export default {
 ::v-deep .blur .recipe-preview {
   pointer-events: none;
   cursor: default;
+}
+.title{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 </style>

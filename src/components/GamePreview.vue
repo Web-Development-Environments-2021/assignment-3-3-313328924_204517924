@@ -5,26 +5,30 @@
     <b-col>
       <div class="game-preview">
           <div :title="id" class="game-title">
-          </div>
           <b-card>
-            <b-list-group flush>
-              <b-list-group-item>Date: {{game.date.substring(0,10)}}</b-list-group-item>
-            </b-list-group><br>
-            <b-list-group flush>
-              <b-list-group-item>Time: {{game.time.substring(11,18)}}</b-list-group-item>
-            </b-list-group><br>
-            <b-list-group flush>
-              <b-list-group-item>Home Team: {{game.homeTeam}}</b-list-group-item>
-            </b-list-group><br>
-            <b-list-group flush>
-              <b-list-group-item>Gust Team: {{game.gustTeam}}</b-list-group-item>
-            </b-list-group><br>
-            <b-list-group flush>
-              <b-list-group-item>Stadium: {{game.stadium}}</b-list-group-item>
-            </b-list-group><br>
-            <b-list-group flush>
-              <b-list-group-item v-if="game.score">Score: {{game.score}}</b-list-group-item>
-            </b-list-group><br>
+            <b-row>
+              <b-col>
+                {{game.homeTeam}}
+              </b-col>
+              <b-col align-h="center">
+                &#127386;
+              </b-col>
+              <b-col>
+                {{game.gustTeam}}
+              </b-col>
+            </b-row>
+            <b-row align-h="center">
+              &#128197;: {{game.date.substring(0,10)}}
+            </b-row>
+            <b-row align-h="center">
+              &#128348;: {{game.time.substring(11,18)}}
+            </b-row>
+            <b-row align-h="center">
+              Stadium: {{game.stadium}}
+            </b-row>
+            <b-row align-h="center" v-if="game.score">
+              Score: {{game.score}}
+            </b-row>
           </b-card>
             <b-button :pressed.sync="myToggle" variant="primary" @click="showActivity">Show match activities</b-button>
             <router-link v-if="isAdmin" :to="{name: 'EditGame', params:{gameId:gameId}}">
@@ -35,6 +39,7 @@
             :type="'Games'"
             :id="gameId"
             ></AddFavorite>
+            </div>
         </div>
     </b-col>
     <b-col><GameActivities
@@ -89,7 +94,7 @@ export default {
 <style>
 .game-preview {
   display: inline-block;
-  width: 275px;
+  width: 375px;
   height: 300px;
   position: relative;
   margin: 10px 10px;
@@ -102,7 +107,8 @@ export default {
 .game-preview .game-title {
   text-align: center;
   text-transform: uppercase;
-  color:  rgb(111, 197, 157);
+  font-family:fantasy;
+  color:  rgb(5, 10, 8);
 }
 
 .game-preview .game-content {

@@ -2,7 +2,7 @@
     <div>
       <b-container class="bv-example-row">
         <b-row>
-          <b-col><br><br>
+          <b-col align-h="center"><br><br>
              <router-link :to="{name: 'AddGame'}">
                <div>
                 <b-card
@@ -12,7 +12,7 @@
                   img-top
                   tag="article"
                   style="max-width: 20rem;"
-                  class="mb-2"
+                  class="text-center"
                 >
                   <b-card-text>
                     Insert new match
@@ -20,9 +20,8 @@
                 </b-card>
               </div>
              </router-link>
-    </b-col>
-          <b-col><br><br>
-          <div>
+          </b-col>
+          <b-col align-h="center"><br><br>
             <b-card
               title="Sort match"
               img-src="https://cdn.vox-cdn.com/thumbor/kdUXeIdF99iDYkUh_4TeI-kAC9o=/0x0:4775x3091/1200x800/filters:focal(2006x1164:2770x1928)/cdn.vox-cdn.com/uploads/chorus_image/image/69239730/1303177487.0.jpg"
@@ -30,19 +29,16 @@
               img-top
               tag="article"
               style="max-width: 20rem;"
-              class="mb-2"
+              class="text-center"
             >
-              <b-card-text>
-                Sort match by:
-              </b-card-text>
-              <b-container class="bv-example-row">
-                <b-row>
-                  <b-col><b-button type="submit" @click="sortGames(sortDate)">Date</b-button></b-col>
-                  <b-col><b-button type="submit" @click="sortGames(sortTeam)">Team</b-button></b-col>
-                </b-row>
-              </b-container>
+            <div>
+              <b-form-group label="Sort match by:" v-slot="{ ariaDescribedby }">
+                <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="date">Date</b-form-radio>
+                <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="home_team">Team</b-form-radio>
+                <b-button type="submit" @click="sortGames(selected)">Sort</b-button>
+              </b-form-group>
+            </div>
             </b-card>
-          </div>
             </b-col>
         </b-row>
       </b-container>
@@ -78,6 +74,7 @@ export default {
             componentKeyNext:0,
             pastGames: [],
             upComingGames: [],
+            selected:"",
             sortDate: "date",
             sortTeam: "home_team",
             searchFor: "date",
