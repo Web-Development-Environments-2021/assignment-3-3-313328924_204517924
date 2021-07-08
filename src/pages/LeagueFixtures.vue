@@ -3,31 +3,28 @@
         <br><br>
      <span>
     <h1>Past Matchs</h1><br>
-        <SearchResults 
+        <PreviewWrapper 
         v-if="hasPastGame" 
         :type="'game'"
         :results="pastGames"
-        ></SearchResults>
+        ></PreviewWrapper>
     </span>
     <br>
     <span>
     <h1>Upcomoing Matchs</h1><br>
-        <SearchResults  
+        <PreviewWrapper  
         v-if="hasNextGame" 
         :type="'game'"
         :results="upComingGames"
-        ></SearchResults>
+        ></PreviewWrapper>
     </span>
     </div>
 
 </template>
 
 <script>
-import SearchResults from '../components/SearchResults.vue';
+
 export default {
-    components:{
-        SearchResults: SearchResults 
-  },
     data(){
         return{
             hasPastGame : true,

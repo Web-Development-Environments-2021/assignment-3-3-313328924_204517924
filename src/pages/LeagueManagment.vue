@@ -48,32 +48,29 @@
       </b-container>
     <br>
     <span>
-    <h1>Past Games</h1><br>
-        <SearchResults :key="componentKeyPast"
+    <h1>Past Matchs</h1><br>
+        <PreviewWrapper :key="componentKeyPast"
         v-if="hasPastGame" 
         :type="'game'"
         :results="pastGames"
-        ></SearchResults>
+        ></PreviewWrapper>
     </span>
     <br>
     <span>
-    <h1>Upcomoing Games</h1><br>
-        <SearchResults :key="componentKeyNext" 
+    <h1>Upcomoing Matchs</h1><br>
+        <PreviewWrapper :key="componentKeyNext" 
         v-if="hasNextGame" 
         :type="'game'"
         :results="upComingGames"
-        ></SearchResults>
+        ></PreviewWrapper>
     </span>
   </div>
 
 </template>
 
 <script>
-import SearchResults from '../components/SearchResults.vue';
+
 export default {
-    components:{
-        SearchResults: SearchResults 
-  },
     name:"LeagueManagment",
     data(){
         return{

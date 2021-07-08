@@ -41,20 +41,17 @@
       </b-card-text>
     </b-card>
     </div>
-        <SearchResults  
+        <PreviewWrapper  
         v-if="hasNextGame" 
         :type="'game'"
         :results="nextGame"
-        ></SearchResults>
+        ></PreviewWrapper>
   </div>
 </template>
 
 <script>
-import SearchResults from './SearchResults.vue';
 export default {
-    components:{
-        SearchResults: SearchResults 
-  },
+
  data() {
     return {
       hasNextGame: true,
