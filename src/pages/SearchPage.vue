@@ -54,12 +54,12 @@
 
       <br/>
       <b-row align-h="center" class="justify-content-md-center" >
-        <b-col cols="4" align-self="center">
+        <b-col cols="12" align-self="center">
 
           <PreviewWrapper
           :key="update"
           v-if="hasResults" 
-          tag="b-col"
+          tag="div"
           :type="type"
           :results="manipulatedResults"
           ></PreviewWrapper>
@@ -107,9 +107,10 @@ export default {
       try{
         this.results = [];
         this.hasResults = true;
-        const result = await this.axios.get(
-          `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
-        this.results = result.data;
+        // const result = await this.axios.get(
+        //   `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
+        // this.results = result.data;
+        this.results = JSON.parse(sessionStorage.getItem('team')).data.players;
         // this.results = [{id:1, name:"kkkk", image:"dfsdf", position:2, team_name:"zzzz"}, {id:1, name:"aaaa", image:"dfsdf", position:1, team_name:"yyyy"}, {id:1, name:"cccc", image:"dfsdf", position:3, team_name:"wwww"}, {id:1, name:"dddd", image:"dfsdf", position:1, team_name:"xxxx"}];
         this.manipulatedResults = this.results;
         this.apply;
