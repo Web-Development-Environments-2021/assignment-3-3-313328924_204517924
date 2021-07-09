@@ -1,7 +1,36 @@
 <template>
     <div>
-        <b-container fluid="lg">
+        <b-container>
+            <b-card border-variant="dark" header="Dark" align="center" bg-variant="light" text-variant="dark">
+            <template #header>
+            <b-row>
+              <b-col align-h="center">
+                {{date}}
+              </b-col>
+              <b-col align-h="center">
+                {{time}}
+              </b-col>
+              <b-col align-h="center" >
+                {{round}}
+              </b-col>
+            </b-row>
+            </template>
+            <b-card-text>
+            <b-row>
+              <b-col align-h="center" :style="homeColor">
+                {{homeTeam}}
+              </b-col>
+              <b-col align-h="center">
+                &#127386;
+              </b-col>
+              <b-col align-h="center" :style="awayColor">
+                {{awayTeam}}
+              </b-col>
+            </b-row>
 
+            </b-card-text>
+            <b-button href="#" variant="primary">Go somewhere</b-button>
+            </b-card>
         </b-container>
     </div>
 </template>
