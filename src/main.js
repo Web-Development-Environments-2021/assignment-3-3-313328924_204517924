@@ -42,6 +42,10 @@ import {
     FormRadioPlugin,
     ImagePlugin,
     ListGroupPlugin,
+<<<<<<< HEAD
+=======
+    ButtonGroupPlugin
+>>>>>>> f427a4dcb9bd792aefb711ee1628362f0c7d6e83
 } from "bootstrap-vue";
 [
     FormGroupPlugin,
@@ -57,7 +61,8 @@ import {
     InputGroupPlugin,
     FormRadioPlugin,
     ImagePlugin,
-    ListGroupPlugin
+    ListGroupPlugin,
+    ButtonGroupPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 
@@ -109,17 +114,17 @@ const shared_data = {
 };
 // Vue.prototype.$root.store = shared_data;
 router.beforeEach((to, from, next) => {
-    if(shared_data.username){
-      const cookie = window.$cookies.get('session');
-      console.log(cookie)
-      if(!cookie && shared_data.domain == "http://localhost:3000/"){
-        shared_data.logout();
-        next({name: 'main'});
-      }
+    if (shared_data.username) {
+        const cookie = window.$cookies.get('session');
+        console.log(cookie)
+        if (!cookie && shared_data.domain == "http://localhost:3000/") {
+            shared_data.logout();
+            next({ name: 'main' });
+        }
     }
     next();
-  });
-  
+});
+
 
 new Vue({
     router,
