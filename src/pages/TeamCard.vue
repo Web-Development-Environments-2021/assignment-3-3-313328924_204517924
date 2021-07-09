@@ -19,13 +19,21 @@
                     <template #footer>
                         <AddFavorite
                         v-if="$root.store.username"
-                        :type="'Teams'"
+                        type="Teams"
                         :id="id"
                         ></AddFavorite>
                     </template>
                 </b-card>
             </b-col>
         </b-row>
+        <b-button v-b-toggle.collapse-1 variant="primary">Show Team's Players</b-button>
+        <b-collapse id="collapse-1" class="mt-2">
+            <PreviewWrapper
+            tag="b-col"
+            type="player"
+            :results="players"
+            ></PreviewWrapper>
+        </b-collapse>
     </b-container>
 
 </template>
@@ -53,7 +61,10 @@ export default {
             this.logo = teamDetails.data.logo;
             this.past_fixures = teamDetails.data.past_fixures;
             this.future_fixures = teamDetails.data.future_fixures;
-            this.playerss = teamDetails.data.playerss;
+            this.players = teamDetails.data.players;
+        },
+        cccc(){
+          console.log(this.players);  
         }
     },
     created(){

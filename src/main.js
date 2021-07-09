@@ -42,7 +42,10 @@ import {
     FormRadioPlugin,
     ImagePlugin,
     ListGroupPlugin,
+<<<<<<< HEAD
+=======
     ButtonGroupPlugin
+>>>>>>> f427a4dcb9bd792aefb711ee1628362f0c7d6e83
 } from "bootstrap-vue";
 [
     FormGroupPlugin,
@@ -106,6 +109,7 @@ const shared_data = {
         console.log("logout");
         sessionStorage.removeItem("username");
         this.username = undefined;
+        window.localStorage.clear();
     }
 };
 // Vue.prototype.$root.store = shared_data;

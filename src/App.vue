@@ -40,6 +40,11 @@ export default {
       // isAdmin:false,
     }
   },
+<<<<<<< HEAD
+  created(){
+      if(this.$root.store.username === "AdminUser")
+      this.isAdmin = true;
+=======
   computed:{
     checkIfAdmin(){
     if(this.$root.store.username === "AdminUser")
@@ -47,6 +52,7 @@ export default {
       else
         return false;
     }
+>>>>>>> f427a4dcb9bd792aefb711ee1628362f0c7d6e83
   },
   methods: {
     Logout() {
