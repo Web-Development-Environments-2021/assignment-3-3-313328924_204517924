@@ -4,7 +4,7 @@
       <b-navbar-brand :to="{ name: 'main' }">Superliga Vue</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-        <b-nav-item :to="{ name: 'About' , params:{teamId:teamId}}">About</b-nav-item>
+        <b-nav-item :to="{ name: 'About'}">About</b-nav-item>
         <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
         <b-nav-item :to="{ name: 'LeagueFixtures' }">League Fixture</b-nav-item>
         <!-- add v-if for this option -->
@@ -35,9 +35,7 @@ export default {
   name: "App",
   data(){
     return{
-      teamId:"939"
-      // changeUser:0,
-      // isAdmin:false,
+
     }
   },
   computed:{

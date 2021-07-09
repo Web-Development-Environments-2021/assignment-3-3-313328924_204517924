@@ -3,33 +3,42 @@
         <b-container>
             <b-card border-variant="dark" header="Dark" align="center" bg-variant="light" text-variant="dark">
             <template #header>
-            <b-row>
+            <b-row align-h="center">
               <b-col align-h="center">
-                {{date}}
+                &#128197;{{date}}
               </b-col>
               <b-col align-h="center">
-                {{time}}
+                &#128348;{{time}}
               </b-col>
               <b-col align-h="center" >
-                {{round}}
+                Round:{{round}}
               </b-col>
             </b-row>
             </template>
             <b-card-text>
-            <b-row>
-              <b-col align-h="center" :style="homeColor">
-                {{homeTeam}}
+            <b-row align-h="center">
+              <b-col align-h="center">
+                <img :src="homeTeamImg" >
               </b-col>
               <b-col align-h="center">
+                <img :src="awayTeamImg" >
+              </b-col>
+            </b-row>
+            <b-row align-h="center">
+              <b-col align-h="center">
+                {{homeTeam}}
+              </b-col>
+              <b-col cols="2" align-h="center">
                 &#127386;
               </b-col>
-              <b-col align-h="center" :style="awayColor">
+              <b-col align-h="center">
                 {{awayTeam}}
               </b-col>
             </b-row>
-
+            <b-row align-h="center" v-if="homeScore">
+              <strong>Score: {{homeScore}} - {{awayScore}}</strong>
+            </b-row>
             </b-card-text>
-            <b-button href="#" variant="primary">Go somewhere</b-button>
             </b-card>
         </b-container>
     </div>
@@ -40,28 +49,28 @@ export default {
     data(){
         return{
             homeTeam:"",
+            homeTeamImg:"",
             awayTeam:"",
-            homeScore:"",
-            awayScore:"",
-            winner:"",
+            awayTeamImg:"",
+            homeScore:null,
+            awayScore:null,
             round:"",
             date:"",
             time:"",
-            homeColor:"",
-            awayColor:"",
         }
     },
     created(){
-        this.homeTeam = this.date.home_team;
-        this.awayTeam = this.date.home_team;
-        this.homeScore = this.date.home_team;
-        this.awayScore = this.date.home_team;
-        this.winner = this.date.home_team;
-        this.round = this.date.round_name;
-        this.date = this.date.home_team;
-        this.time = this.date.home_team;
-        this.homeColor = this.date.home_team;
-        this.awayColor = this.date.home_team;
+        this.homeTeam = this.data.home_team.name;
+        this.homeTeamImg = this.data.home_team.logo;
+        this.awayTeam = this.data.away_team.name;
+        this.awayTeamImg = this.data.away_team.logo;
+        if(this.data.home_score){
+            this.homeScore = this.data.home_score;
+            this.awayScore = this.data.away_score;
+        }
+        this.round = this.data.round_name;
+        this.date = this.data.date;
+        this.time = this.data.time;
     }
 }
 </script>

@@ -26,14 +26,35 @@
                 </b-card>
             </b-col>
         </b-row>
-        <b-button v-b-toggle.collapse-1 variant="primary">Show Team's Players</b-button>
-        <b-collapse id="collapse-1" class="mt-2">
-            <PreviewWrapper
-            tag="div"
-            type="player"
-            :results="players"
-            ></PreviewWrapper>
-        </b-collapse>
+        <b-row>
+            <b-col align-h="center">
+                <b-button v-b-toggle.collapse-1 variant="primary">Show Team's Players</b-button>
+                <b-collapse id="collapse-1" class="mt-2">
+                    <PreviewWrapper
+                    tag="div"
+                    type="player"
+                    :results="players"
+                    ></PreviewWrapper>
+                </b-collapse>
+            </b-col>
+            <b-col>
+                <b-button v-b-toggle.collapse-2 variant="primary">Show Team's Matchs</b-button>
+                <b-collapse id="collapse-2" class="mt-2">
+                    <h1>Past fixures</h1>
+                    <PreviewWrapper
+                    tag="div"
+                    type="APIGame"
+                    :results="pastFixures"
+                    ></PreviewWrapper>
+                    <h1>Next fixures</h1>
+                    <PreviewWrapper
+                    tag="div"
+                    type="APIGame"
+                    :results="futureFixures"
+                    ></PreviewWrapper>
+                </b-collapse>
+            </b-col>
+        </b-row>
     </b-container>
 
 </template>
@@ -47,8 +68,8 @@ export default {
             shortcode: "",
             foundation: 0,
             logo: "",
-            past_fixures: [],   
-            future_fixures: [],
+            pastFixures: [],   
+            futureFixures: [],
             players: []   
         }
     },
@@ -56,16 +77,22 @@ export default {
         async getTeamFullDetails(){
             try{
                 // const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
-                const teamDetails = JSON.parse(sessionStorage.getItem('team'));
-                console.log(teamDetails);
-                this.name = teamDetails.data.name;
-                this.shortcode = teamDetails.data.shortcode;
-                this.foundation = teamDetails.data.foundation;
-                this.logo = teamDetails.data.logo;
-                this.past_fixures = teamDetails.data.past_fixures;
-                this.future_fixures = teamDetails.data.future_fixures;
-                this.players = teamDetails.data.players;
-                console.log(this.players);
+                // const teamDetails = JSON.parse(sessionStorage.getItem('team'));
+                // console.log(teamDetails);
+                let teamData =  JSON.parse(localStorage.getItem('teamDataAll'));
+                console.log(teamData);
+                this.pastFixures = teamData.past_fixures;
+                this.futureFixures = teamData.future_fixtures;
+                console.log(this.pastFixures);
+                console.log(this.futureFixures);
+                // this.name = teamDetails.data.name;
+                // this.shortcode = teamDetails.data.shortcode;
+                // this.foundation = teamDetails.data.foundation;
+                // this.logo = teamDetails.data.logo;
+                // this.pastFixures = teamDetails.data.past_fixures;
+                // this.futureFixures = teamDetails.data.future_fixures;
+                // this.players = teamDetails.data.players;
+                // console.log(this.players);
                 // window.sessionStorage.setItem('team', JSON.stringify(teamDetails));
             }catch(err){
                 console.log(err);

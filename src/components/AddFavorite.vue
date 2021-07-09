@@ -3,13 +3,13 @@
         <b-button
         v-if="!isFavorite" 
         @click="addToFavorite"
-        variant="danger"
+        variant="warning"
         >+ Add As Favorite
         </b-button>
 
-        <p v-else class="text-info">
+        <b-button v-else class="text-info" disabled variant="warning">
             <strong>One of your Favorite {{type}}</strong>
-        </p>
+        </b-button>
     </div>
 </template>
 
