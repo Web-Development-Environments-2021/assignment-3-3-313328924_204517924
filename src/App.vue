@@ -4,7 +4,7 @@
       <b-navbar-brand :to="{ name: 'main' }">Superliga Vue</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-
+        <b-nav-item :to="{ name: 'About' , params:{teamId:teamId}}">About</b-nav-item>
         <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
         <b-nav-item :to="{ name: 'LeagueFixtures' }">League Fixture</b-nav-item>
         <!-- add v-if for this option -->
@@ -13,6 +13,7 @@
         <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
           <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
+          <b-nav-item ><strong>Hellow Gust</strong></b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-else>
         <b-nav-item-dropdown right>
@@ -34,6 +35,10 @@ export default {
   name: "App",
   data(){
     return{
+<<<<<<< HEAD
+=======
+      teamId:"939"
+>>>>>>> 9acda128c389b8ef38f3f67f97a3fa97f67ba9b2
       // changeUser:0,
       // isAdmin:false,
     }

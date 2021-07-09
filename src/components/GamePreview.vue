@@ -30,15 +30,19 @@
               Score: {{game.score}}
             </b-row>
           </b-card>
-            <b-button v-if="!preview" :pressed.sync="myToggle" variant="primary" @click="showActivity">Show match activities</b-button>
-            <router-link v-if="isAdmin" :to="{name: 'EditGame', params:{gameId:gameId}}">
-                <b-button  variant="danger">Edit match</b-button>
-            </router-link>
+          <b-button-group style="font-family:'Times New Roman', Times, serif">
+            <b-button v-if="currentRouteName" :pressed.sync="myToggle" variant="primary" >Show activities</b-button>
+            <b-button v-if="checkIfAdmin"  variant="danger">
+              <router-link  :to="{name: 'EditGame', params:{gameId:gameId}}">Edit match</router-link>
+            </b-button>
+            <b-button> 
             <AddFavorite
             v-if="this.$root.store.username"
             :type="'Games'"
             :id="gameId"
             ></AddFavorite>
+            </b-button>
+        </b-button-group>
             </div>
         </div>
     </b-col>
@@ -61,7 +65,6 @@ export default {
   props: {data: Object},
   data(){
     return{
-      isAdmin:false,
       preview:false,
       gameId:"",
       game:{
@@ -78,9 +81,6 @@ export default {
     created() {
       if(this.$root.store.username==="AdminUser")
         this.isAdmin = true;
-      // console.log(this.data.isPreviwe);
-      // if(!this.data.isPreviwe)
-      //   this.preview = false;
       this.gameId = this.data.game_id;
       this.game.date = this.data.date;
       this.game.time = this.data.time;
@@ -89,11 +89,21 @@ export default {
       this.game.stadium = this.data.stadium;
       this.game.score = this.data.score;    
     },
-    methods:{
-      async showActivity(){
-
-      }
+  computed:{
+    checkIfAdmin(){
+      if(this.$root.store.username === "AdminUser" && this.$route.name === "LeagueManagment")
+        return true;
+        else
+          return false;
+      },
+    currentRouteName() {
+      // console.log(this.$route.name)
+      if(this.$route.name != "main")
+        return true;
+        else
+          return false;
     }
+  },
 };
 </script>
 
@@ -121,7 +131,5 @@ export default {
   width: 100%;
   overflow: hidden;
 }
-
-
 
 </style>

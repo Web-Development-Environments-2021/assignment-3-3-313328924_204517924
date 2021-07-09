@@ -38,7 +38,7 @@
 
 <script>
 export default {
-    props: {game: String},
+    props: {game: Number},
     data(){
         return{
             activities:[],
