@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid="sm">
+    <b-container>
         <b-card
         :title="name"
         :img-src="logo"
@@ -10,12 +10,10 @@
         style="max-width: 20rem;"
         class="mb-2"
         >
-        
-            <b-button variant="primary">
-                <router-link :to="{name: 'TeamCard', params: {teamId: id}}">Team Page</router-link>
+            <b-button variant="primary" >
+                <router-link class="team-link" :to="{name: 'TeamCard', params: {teamId: id}}">Team Page</router-link>
             </b-button>
         </b-card>
-    <!-- <router-link :to="{name: 'TeamCard', params: {teamId: id}}">{{data}}</router-link> -->
     </b-container>
 </template>
 
@@ -38,5 +36,10 @@ export default {
 }
 </script>
 <style>
-
+    .team-link{
+        color: white;
+    }
+    .container{
+        align-items: center;
+    }
 </style>

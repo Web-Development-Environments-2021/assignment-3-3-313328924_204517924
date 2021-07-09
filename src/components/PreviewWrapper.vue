@@ -1,9 +1,9 @@
 <template>
 
     <b-container fluid>    
-        <b-row>
+        <b-row align-h="center">
             <component :is="tag" v-for="(result, index) in updateArray" :key="index">
-                <component 
+                <component
                 :is="createChildComponentString"
                 :data="results[index]"
                 ></component> 
@@ -37,3 +37,5 @@ export default {
 
 }
 </script>
+<style>
+</style>

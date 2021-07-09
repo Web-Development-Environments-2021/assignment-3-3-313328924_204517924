@@ -30,39 +30,41 @@
       </b-row>
       <b-row align-h="center">
         <b-col cols="3">
-          <b-row align-h="center">sort by:</b-row>
+          <b-row align-h="center">Sort by:</b-row>
           <b-form-select
           v-model="sort" 
           :options="sortOptions"
-          @change="sortResults"
           ></b-form-select>
         </b-col>
         <b-col cols="2" v-if="type==='player'">
-          <b-row align-h="center">filter by position:</b-row>
+          <b-row align-h="center">Team:</b-row>
+          <b-form-input v-model="teamFilter"></b-form-input>
+        </b-col>
+        <b-col cols="1" v-if="type==='player'">
+          <b-row align-h="center">Position:</b-row>
           <b-form-input v-model="positionFilter"></b-form-input>
         </b-col>
-        <b-col cols="3" v-if="type==='player'">
-          <b-row align-h="center">filter by team:</b-row>
-          <b-form-input v-model="teamFilter"></b-form-input>
+        <b-col cols="1">
+          <br>
+          <b-button variant="success" @click="apply" >
+            Apply
+          </b-button>
         </b-col>
       </b-row>
 
       <br/>
       <b-row align-h="center" class="justify-content-md-center" >
-        <!-- <PreviewWrapper
-        v-if="isPlayerSorted" 
-        tag="b-col"
-        :type="type"
-        :results="sortPlayerResults"
-        ></PreviewWrapper> -->
-        <PreviewWrapper
-        :key="update"
-        v-if="hasResults" 
-        tag="b-col"
-        :type="type"
-        :results="manipulatedResults"
-        ></PreviewWrapper>
-        <h3 v-else><strong>Couldn't find such {{type}}</strong></h3>
+        <b-col cols="4" align-self="center">
+
+          <PreviewWrapper
+          :key="update"
+          v-if="hasResults" 
+          tag="b-col"
+          :type="type"
+          :results="manipulatedResults"
+          ></PreviewWrapper>
+          <h3 v-else><strong>Couldn't find such {{type}}</strong></h3>
+        </b-col>
       </b-row>
       
     </b-container>
@@ -105,13 +107,12 @@ export default {
       try{
         this.results = [];
         this.hasResults = true;
-        // const result = await this.axios.get(
-        //   `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
-        // this.results = result.data;
-        this.results = [{id:1, name:"bbbb", image:"dfsdf", position:1, team_name:"zzzz"}, {id:1, name:"aaaa", image:"dfsdf", position:1, team_name:"yyyy"}, {id:1, name:"cccc", image:"dfsdf", position:1, team_name:"wwww"}, {id:1, name:"dddd", image:"dfsdf", position:1, team_name:"xxxx"}];
+        const result = await this.axios.get(
+          `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
+        this.results = result.data;
+        // this.results = [{id:1, name:"kkkk", image:"dfsdf", position:2, team_name:"zzzz"}, {id:1, name:"aaaa", image:"dfsdf", position:1, team_name:"yyyy"}, {id:1, name:"cccc", image:"dfsdf", position:3, team_name:"wwww"}, {id:1, name:"dddd", image:"dfsdf", position:1, team_name:"xxxx"}];
         this.manipulatedResults = this.results;
-        console.log(this.results);
-        this.saveSearch();
+        this.apply;
       }catch(err){
         this.hasResults = false;
       }
@@ -119,35 +120,58 @@ export default {
     typeChangeAction(){
       this.hasResults = true
       this.results = [];
-      this.sortOptions[0].disabled = (this.type === 'team') ? false : true; 
+      this.manipulatedResults = [];
+      this.sortOptions[1].disabled = (this.type === 'team') ? false : true;
+      // console.log(this.sortOptions[1].disabled);
     },
     sortResults(){
-      if(this.sort === "player"){
-        console.log(this.sort);
-        this.results.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));  
-        this.isPlayerSorted = true;
+      if(this.sort === "player" || this.type === "team"){
+        this.manipulatedResults.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));  
       }else if(this.sort === "team"){
-        let temp = this.results.sort((a,b) => (a.team_name > b.team_name) ? 1 : ((b.team_name > a.team_name) ? -1 : 0));  
-        this.results = temp
+        this.manipulatedResults.sort((a,b) => (a.team_name > b.team_name) ? 1 : ((b.team_name > a.team_name) ? -1 : 0));  
       }
-      this.update++;
-      this.saveSearch();
     },
+    
 
+    filterPositions(){
+      if (this.positionFilter !== ""){
+        console.log(parseInt(this.positionFilter));
+        this.manipulatedResults = this.manipulatedResults.filter(el => el.position === parseInt(this.positionFilter));
+        console.log(this.manipulatedResults);
+        console.log(this.results);
+      }
+    },
+    filterTeam(){
+      if (this.teamFilter !== ""){
+        this.manipulatedResults = this.manipulatedResults.filter(el => el.team_name === this.teamFilter);
+        console.log(this.manipulatedResults);
+        console.log(this.results);
+      }
+    },
+    apply(){
+      this.manipulatedResults = this.results;
+      this.sortResults();
+      this.filterPositions();
+      this.filterTeam();
+      this.update++;
+    },
     saveSearch(){
         window.localStorage.setItem('query', this.searchQuery);
         window.localStorage.setItem('results', JSON.stringify(this.results)) ;
+        window.localStorage.setItem('manipulated', JSON.stringify(this.manipulatedResults)) ;
         window.localStorage.setItem('type', this.type);
-    }
-
+    },
   },
   created(){
-    this.results =  JSON.parse(localStorage.getItem('results') || "[]");
+    this.results = JSON.parse(localStorage.getItem('results') || "[]");
+    this.manipulatedResults =  JSON.parse(localStorage.getItem('manipulated') || "[]");
     this.searchQuery = window.localStorage.getItem('query');
     this.type = (window.localStorage.getItem('type') === null) ? "player" : window.localStorage.getItem('type');
+    console.log(window.localStorage.getItem('type'));
     this.searchTypes = this.$root.store.searchTypes;
   },
-  computed:{
+  beforeDestroy(){
+    this.saveSearch();
   }
 }
 </script>
@@ -157,8 +181,8 @@ export default {
   margin:15px;
   width: 500px; 
 }
-.results{
-  align-self: center;
+.col{
+  align-items: center;
 }
 .title{
   padding: 20px;

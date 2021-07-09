@@ -35,10 +35,7 @@ export default {
   name: "App",
   data(){
     return{
-<<<<<<< HEAD
-=======
       teamId:"939"
->>>>>>> 9acda128c389b8ef38f3f67f97a3fa97f67ba9b2
       // changeUser:0,
       // isAdmin:false,
     }

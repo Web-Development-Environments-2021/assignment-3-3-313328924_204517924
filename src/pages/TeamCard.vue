@@ -29,7 +29,7 @@
         <b-button v-b-toggle.collapse-1 variant="primary">Show Team's Players</b-button>
         <b-collapse id="collapse-1" class="mt-2">
             <PreviewWrapper
-            tag="b-col"
+            tag="div"
             type="player"
             :results="players"
             ></PreviewWrapper>
@@ -42,7 +42,7 @@
 export default {
     data(){
         return{
-            id: 0,
+            id: 939,
             name: "",
             shortcode: "",
             foundation: 0,
@@ -54,21 +54,27 @@ export default {
     },
     methods: {
         async getTeamFullDetails(){
-            const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
-            this.name = teamDetails.data.name;
-            this.shortcode = teamDetails.data.shortcode;
-            this.foundation = teamDetails.data.foundation;
-            this.logo = teamDetails.data.logo;
-            this.past_fixures = teamDetails.data.past_fixures;
-            this.future_fixures = teamDetails.data.future_fixures;
-            this.players = teamDetails.data.players;
+            try{
+                // const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
+                const teamDetails = JSON.parse(sessionStorage.getItem('team'));
+                console.log(teamDetails);
+                this.name = teamDetails.data.name;
+                this.shortcode = teamDetails.data.shortcode;
+                this.foundation = teamDetails.data.foundation;
+                this.logo = teamDetails.data.logo;
+                this.past_fixures = teamDetails.data.past_fixures;
+                this.future_fixures = teamDetails.data.future_fixures;
+                this.players = teamDetails.data.players;
+                console.log(this.players);
+                // window.sessionStorage.setItem('team', JSON.stringify(teamDetails));
+            }catch(err){
+                console.log(err);
+            }
+
         },
-        cccc(){
-          console.log(this.players);  
-        }
     },
     created(){
-        this.id = this.$route.params.teamId;
+        // this.id = this.$route.params.teamId;
         this.getTeamFullDetails()
     }
 }
