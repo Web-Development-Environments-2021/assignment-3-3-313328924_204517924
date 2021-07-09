@@ -1,6 +1,18 @@
 <template>
     <div>
-        <h1> Hi </h1>
+        <h1> Past matchs </h1>
+        <PreviewWrapper 
+        tag="div" 
+        :type="'APIGame'"
+        :results="pastGames"
+        ></PreviewWrapper>
+        <br>
+        <h1> Next matchs </h1>
+        <PreviewWrapper 
+        tag="div" 
+        :type="'APIGame'"
+        :results="nextGames"
+        ></PreviewWrapper>
     </div>
 </template>
 
@@ -8,13 +20,30 @@
 export default {
     data(){
         return{
-            id:"",
+            id:"939",
+            pastGames : [],
+            nextGames:[],
+
         }
     },
     async created(){
-        this.id = this.$route.params.teamId;
-        const teamData = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
-        console.log(teamData.data);
+        console.log(this.id);
+        // try{
+        // const teamData = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
+        // console.log(teamData.data);
+        // window.localStorage.setItem('teamDataAll', JSON.stringify(teamData.data)) ;
+        // this.pastGames = teamData.data.past_fixures;
+        // }catch(err){
+
+        // }
+        try{
+        let teamData =  JSON.parse(localStorage.getItem('teamDataAll'));
+        console.log(teamData);
+        this.pastGames = teamData.past_fixures;
+        this.nextGames = teamData.future_fixtures;
+        }catch(err){
+
+        }
         
     }   
 }

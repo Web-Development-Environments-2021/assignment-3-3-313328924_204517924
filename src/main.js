@@ -12,6 +12,8 @@ const router = new VueRouter({
 
 import PreviewWrapper from './components/PreviewWrapper.vue';
 Vue.component("PreviewWrapper", PreviewWrapper);
+import APIGamePreview from './components/APIGamePreview.vue';
+Vue.component("APIGamePreview", APIGamePreview);
 import PlayerPreview from './components/PlayerPreview';
 Vue.component("PlayerPreview", PlayerPreview);
 import TeamPreview from './components/TeamPreview.vue';
