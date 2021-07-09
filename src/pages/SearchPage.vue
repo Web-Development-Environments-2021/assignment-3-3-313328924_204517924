@@ -60,7 +60,7 @@
         v-if="hasResults" 
         tag="b-col"
         :type="type"
-        :results="results"
+        :results="manipulatedResults"
         ></PreviewWrapper>
         <h3 v-else><strong>Couldn't find such {{type}}</strong></h3>
       </b-row>
@@ -109,6 +109,7 @@ export default {
         //   `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
         // this.results = result.data;
         this.results = [{id:1, name:"bbbb", image:"dfsdf", position:1, team_name:"zzzz"}, {id:1, name:"aaaa", image:"dfsdf", position:1, team_name:"yyyy"}, {id:1, name:"cccc", image:"dfsdf", position:1, team_name:"wwww"}, {id:1, name:"dddd", image:"dfsdf", position:1, team_name:"xxxx"}];
+        this.manipulatedResults = this.results;
         console.log(this.results);
         this.saveSearch();
       }catch(err){
@@ -147,10 +148,6 @@ export default {
     this.searchTypes = this.$root.store.searchTypes;
   },
   computed:{
-    // filterByPosition
-    updateResults(){
-      return this.results;
-    }
   }
 }
 </script>
