@@ -8,7 +8,7 @@
                 <b-img fluid-grow :src="logo"></b-img>
             </b-col>
             <b-col align-self="center">
-                <b-card title="Team Info:">
+                <b-card style="width:24rem" title="Team Info:">
                     <b-card-text >
                         <b-list-group flush>
                             <b-list-group-item>Team Name: {{name}}</b-list-group-item>
@@ -77,22 +77,15 @@ export default {
         async getTeamFullDetails(){
             try{
                 // const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
-                // const teamDetails = JSON.parse(sessionStorage.getItem('team'));
-                // console.log(teamDetails);
-                let teamData =  JSON.parse(localStorage.getItem('teamDataAll'));
-                console.log(teamData);
-                this.pastFixures = teamData.past_fixures;
-                this.futureFixures = teamData.future_fixtures;
-                console.log(this.pastFixures);
-                console.log(this.futureFixures);
-                // this.name = teamDetails.data.name;
-                // this.shortcode = teamDetails.data.shortcode;
-                // this.foundation = teamDetails.data.foundation;
-                // this.logo = teamDetails.data.logo;
-                // this.pastFixures = teamDetails.data.past_fixures;
-                // this.futureFixures = teamDetails.data.future_fixures;
-                // this.players = teamDetails.data.players;
-                // console.log(this.players);
+                const teamDetails = JSON.parse(sessionStorage.getItem('team'));
+                this.name = teamDetails.data.name;
+                this.shortcode = teamDetails.data.shortcode;
+                this.foundation = teamDetails.data.foundation;
+                this.logo = teamDetails.data.logo;
+                // this.pastFixures = teamDetails.data.past_fixtures;
+                this.pastFixures = teamDetails.data.past_fixures;
+                this.futureFixures = teamDetails.data.future_fixtures;
+                this.players = teamDetails.data.players;
                 // window.sessionStorage.setItem('team', JSON.stringify(teamDetails));
             }catch(err){
                 console.log(err);

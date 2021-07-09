@@ -1,6 +1,6 @@
 <template>
 <div>
-      <b-card border-variant="dark" header="Dark" align="center" bg-variant="light" text-variant="dark" >
+      <b-card id="game-preview" border-variant="dark" header="Dark" align="center" bg-variant="light" text-variant="dark" >
         <template #header>
         <b-row align-h="center">
           <b-col align-h="center">
@@ -149,6 +149,10 @@ export default {
 .game-preview .game-content {
   width: 100%;
   overflow: hidden;
+}
+#game-preview{
+  margin: 5px;
+  width: 28rem;
 }
 
 </style>

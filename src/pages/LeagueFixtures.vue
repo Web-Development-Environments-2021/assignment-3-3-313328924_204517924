@@ -1,25 +1,25 @@
 <template>
     <div>
         <br><br>
-     <span>
-    <h1>Past Matchs</h1><br>
-        <PreviewWrapper 
-        v-if="hasPastGame"
-        tag="div" 
-        :type="'game'"
-        :results="pastGames"
-        ></PreviewWrapper>
-    </span>
+    <b-row class="justify-content-md-center">
+        <h1>Past Matches</h1><br>
+            <PreviewWrapper 
+            v-if="hasPastGame"
+            tag="div" 
+            :type="'game'"
+            :results="pastGames"
+            ></PreviewWrapper>
+    </b-row>
     <br>
-    <span>
-    <h1>Upcomoing Matchs</h1><br>
+    <b-row class="justify-content-md-center">
+    <h1>Upcomoing Matches</h1><br>
         <PreviewWrapper  
         v-if="hasNextGame" 
-        tag="div"
+        tag="col"
         type="game"
         :results="upComingGames"
         ></PreviewWrapper>
-    </span>
+    </b-row>
     </div>
 
 </template>

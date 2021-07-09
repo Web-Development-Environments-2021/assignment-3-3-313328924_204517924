@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-container>
-            <b-card border-variant="dark" header="Dark" align="center" bg-variant="light" text-variant="dark">
+            <b-card style="width:38rem" border-variant="dark" header="Dark" align="center" bg-variant="light" text-variant="dark">
             <template #header>
             <b-row align-h="center">
               <b-col align-h="center">

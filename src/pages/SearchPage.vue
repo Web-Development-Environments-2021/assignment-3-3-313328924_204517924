@@ -27,8 +27,6 @@
         </b-form-group>
       </b-row>
       <b-row align-h="center">
-      </b-row>
-      <b-row align-h="center">
         <b-col cols="3">
           <b-row align-h="center">Sort by:</b-row>
           <b-form-select
@@ -107,10 +105,10 @@ export default {
       try{
         this.results = [];
         this.hasResults = true;
-        // const result = await this.axios.get(
-        //   `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
-        // this.results = result.data;
-        this.results = JSON.parse(sessionStorage.getItem('team')).data.players;
+        const result = await this.axios.get(
+          `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
+        this.results = result.data;
+        // this.results = JSON.parse(sessionStorage.getItem('team')).data.players;
         // this.results = [{id:1, name:"kkkk", image:"dfsdf", position:2, team_name:"zzzz"}, {id:1, name:"aaaa", image:"dfsdf", position:1, team_name:"yyyy"}, {id:1, name:"cccc", image:"dfsdf", position:3, team_name:"wwww"}, {id:1, name:"dddd", image:"dfsdf", position:1, team_name:"xxxx"}];
         this.manipulatedResults = this.results;
         this.apply;
@@ -123,7 +121,6 @@ export default {
       this.results = [];
       this.manipulatedResults = [];
       this.sortOptions[1].disabled = (this.type === 'team') ? false : true;
-      // console.log(this.sortOptions[1].disabled);
     },
     sortResults(){
       if(this.sort === "player" || this.type === "team"){
@@ -166,12 +163,16 @@ export default {
   created(){
     this.results = JSON.parse(localStorage.getItem('results') || "[]");
     this.manipulatedResults =  JSON.parse(localStorage.getItem('manipulated') || "[]");
-    this.searchQuery = window.localStorage.getItem('query');
+    this.searchQuery = (window.localStorage.getItem('query') === null) ? "" : window.localStorage.getItem('query');
     this.type = (window.localStorage.getItem('type') === null) ? "player" : window.localStorage.getItem('type');
-    console.log(window.localStorage.getItem('type'));
-    this.searchTypes = this.$root.store.searchTypes;
+    if(window.sessionStorage.getItem('doRefresh') === "1"){
+      window.sessionStorage.setItem('doRefresh', "0");  
+      this.$router.go()
+    }
+    this.sortOptions[1].disabled = (this.type === 'team') ? true : false;
   },
   beforeDestroy(){
+    window.sessionStorage.setItem('doRefresh', "1");
     this.saveSearch();
   }
 }

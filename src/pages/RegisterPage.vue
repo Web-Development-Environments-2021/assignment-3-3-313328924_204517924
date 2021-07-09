@@ -308,9 +308,8 @@ export default {
         //   }
         // );
         this.$router.push("/login").catch(()=>{});
-        // console.log(response);
+        console.log(response);
       } catch (err) {
-        // console.log('**************************************************'+err.response);
         this.form.submitError = err.response.data;
         // console.log(err.response.data);
       }

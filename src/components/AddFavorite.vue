@@ -29,6 +29,7 @@ export default {
                     },
                     { withCredentials: true }
                 );
+                this.isFavorite = (res.status === 201)? true : false;
             }catch(err){
                 console.log(err);
             }

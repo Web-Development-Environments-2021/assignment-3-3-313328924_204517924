@@ -1,7 +1,7 @@
 <template>
   <div><br>
     <b-row align-h="center">
-      <h1 align-h="center">Favorite &#10084;&#65039; matchs</h1> <br>
+      <h1 align-h="center">Favorite &#10084;&#65039; matches</h1> <br>
           <PreviewWrapper 
           v-if="hasFavorites" 
           tag="div"
@@ -9,7 +9,7 @@
           :results="games"
           ></PreviewWrapper>
           <b-alert v-else show>
-            <h3>No favorite matchs</h3>
+            <h3>No favorite matches</h3>
           </b-alert>
     </b-row>
   </div>

@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid="sm">
+    <b-container >
         <b-row class="justify-content-md-center">
             <h1 class="title">Your Favorites</h1>
         </b-row>
@@ -19,17 +19,16 @@
         <b-row class="justify-content-md-center">
             <PreviewWrapper
             v-if="favorites.length > 0"
-            tag="b-col"
+            tag="div"
             :type="type"
             :results="favorites"
             ></PreviewWrapper>
-            <div 
-            v-else>
+            <div v-else>
                 <h3><strong>There are no favorite {{type}}s</strong></h3>
                 <p>In order to add a {{type}} as a favorite <br>go to a {{type}} page and click the Add Favorite button</p>
             </div>
         </b-row>
-    </b-container>   
+    </b-container> 
 </template>
 <script>
 export default {

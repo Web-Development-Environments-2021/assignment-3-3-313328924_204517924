@@ -8,7 +8,7 @@
                     <b-img fluid-grow :src="image"></b-img>
                 </b-col>
                 <b-col align-self="center">
-                    <b-card title="Player Info:">
+                    <b-card style="width:25rem" title="Player Info:">
                         <b-card-text >
                             <b-list-group flush>
                                 <b-list-group-item>Full Name: {{name}}</b-list-group-item>
