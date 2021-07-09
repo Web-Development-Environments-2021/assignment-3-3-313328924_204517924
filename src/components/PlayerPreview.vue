@@ -8,7 +8,7 @@
         img-top
         border-variant="dark"
         align="center"
-        style="max-width: 50rem;"
+        style="max-width: 20rem;"
         class="mb-2"
         >
             <b-card-body>

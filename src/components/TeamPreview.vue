@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <div>
+    <b-container fluid="sm">
         <b-card
         :title="name"
         :img-src="logo"
@@ -16,9 +15,8 @@
                 <router-link :to="{name: 'TeamCard', params: {teamId: id}}">Team Page</router-link>
             </b-button>
         </b-card>
-        <!-- <router-link :to="{name: 'TeamCard', params: {teamId: id}}">{{data}}</router-link> -->
-        </div>
-    </div>
+    <!-- <router-link :to="{name: 'TeamCard', params: {teamId: id}}">{{data}}</router-link> -->
+    </b-container>
 </template>
 
 <script>

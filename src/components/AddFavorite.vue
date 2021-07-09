@@ -23,7 +23,6 @@ export default {
     },
     methods: {
         async addToFavorite(){
-            console.log("type is "+ this.type);
             try{
                 const res = await this.axios.post(`${this.$root.store.domain_server}/users/addFavorite${this.type}`, {
                     id: this.id
@@ -40,12 +39,14 @@ export default {
                     withCredentials: true
                 });
                 if(typeof(res.data) !== "string"){
-                    for(let fav in res.date){
-                        if(res.data[fav].id === this.id)
-                            exit();
+                    for(let fav in res.data){
+                        if(res.data[fav].id === this.id){
+                            this.isFavorite = true;
+                            return;
+                        }
                     }
                 }
-                this.isFavorite = true
+                this.isFavorite = false;
             }catch(err){
                 console.log(err);
             }

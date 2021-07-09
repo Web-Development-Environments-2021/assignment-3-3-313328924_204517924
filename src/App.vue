@@ -38,17 +38,10 @@ export default {
       isAdmin:false,
     }
   },
-<<<<<<< HEAD
-  // computed() {
-  //     if(this.$root.store.username === "AdminUser")
-  //     this.isAdmin = true;
-  // },
-=======
   created(){
       if(this.$root.store.username === "AdminUser")
       this.isAdmin = true;
   },
->>>>>>> d147a0ae3fb65af14a388a3e74ddc4648b45bfbd
   methods: {
     Logout() {
       try{

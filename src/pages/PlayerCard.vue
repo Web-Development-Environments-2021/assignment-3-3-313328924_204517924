@@ -25,7 +25,7 @@
                         <template #footer>
                             <AddFavorite
                             v-if="$root.store.username"
-                            :type="'Players'"
+                            type="Players"
                             :id="id"
                             ></AddFavorite>
                         </template>
