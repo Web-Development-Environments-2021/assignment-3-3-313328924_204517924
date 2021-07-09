@@ -42,10 +42,7 @@ import {
     FormRadioPlugin,
     ImagePlugin,
     ListGroupPlugin,
-<<<<<<< HEAD
-=======
     ButtonGroupPlugin
->>>>>>> f427a4dcb9bd792aefb711ee1628362f0c7d6e83
 } from "bootstrap-vue";
 [
     FormGroupPlugin,
