@@ -108,10 +108,8 @@ const shared_data = {
         console.log("logout");
         sessionStorage.removeItem("username");
         this.username = undefined;
-        window.localStorage.removeItem("results");
-        window.localStorage.removeItem("manipulated");
-        window.localStorage.removeItem("query");
-        window.localStorage.removeItem("type");
+        window.localStorage.clear()
+        console.log(JSON.parse(localStorage.getItem('manipulated')));
     }
 };
 // Vue.prototype.$root.store = shared_data;

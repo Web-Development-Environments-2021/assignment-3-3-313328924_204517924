@@ -50,9 +50,8 @@ export default {
     Logout() {
       try{
         const response = this.axios.post(`${this.$root.store.domain_server}/Logout`);
-        this.$root.store.logout();
         this.$root.toast("Logout", "User logged out successfully", "success");
-        this.checkUser();
+        this.$root.store.logout();
         console.log(this.isAdmin)
       }catch(err){
         console.log(err);
