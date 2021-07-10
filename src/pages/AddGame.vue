@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Add game</h1> <br>
+        <h1 style="color:darkslategrey;">Add game</h1> <br>
             <b-form>
             <b-form-group
                 id="input-group-1"
@@ -10,7 +10,6 @@
                 <b-form-input
                 id="input-1"
                 v-model="gameForm.date"
-                type="string"
                 placeholder="Enter date"
                 required
                 ></b-form-input>

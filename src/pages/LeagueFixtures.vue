@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="func">
         <br><br>
     <b-row class="justify-content-md-center">
         <h1>Past Matches</h1><br>
