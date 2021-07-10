@@ -46,7 +46,8 @@ import {
     ListGroupPlugin,
     ButtonGroupPlugin,
     TablePlugin,
-    ModalPlugin
+    ModalPlugin,
+    AvatarPlugin
 } from "bootstrap-vue";
 [
     FormGroupPlugin,
@@ -65,7 +66,8 @@ import {
     ListGroupPlugin,
     ButtonGroupPlugin,
     TablePlugin,
-    ModalPlugin
+    ModalPlugin,
+    AvatarPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 
@@ -109,7 +111,8 @@ const shared_data = {
         "Randers",
         "Silkeborg",
         "SønderjyskE",
-        "Viborg"],
+        "Viborg"
+    ],
 
     // username: localStorage.username,
     username: sessionStorage.username,

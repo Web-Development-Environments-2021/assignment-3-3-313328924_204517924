@@ -23,6 +23,9 @@
           <b-dropdown-item :to="{ name: 'Favorite' }">Favorites</b-dropdown-item>
           <b-dropdown-item href="#" @click="Logout">Log Out</b-dropdown-item>
         </b-nav-item-dropdown>
+        <b-nav-item>
+          <b-avatar variant="info" :src="getUserPhoto"></b-avatar>
+        </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -44,6 +47,18 @@ export default {
       return true;
       else
         return false;
+    },
+     getUserPhoto(){
+      try{
+      const url =  this.axios.get(`${this.$root.store.domain_server}/users/userPhoto`);
+      console.log(url.data);
+      let res = "https://placekitten.com/300/300";
+      return res;
+      }catch(err){
+        console.log(err);
+        let a = "https://cdn.sportmonks.com/images/soccer/placeholder.png";
+        return a;
+      }
     }
   },
   methods: {

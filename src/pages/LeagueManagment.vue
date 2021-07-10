@@ -129,6 +129,6 @@ export default {
   .LM{
     color:floralwhite;
     vertical-align: middle;
-    /* display: inline-block; */
+    display: inline-block;
   }
 </style>
