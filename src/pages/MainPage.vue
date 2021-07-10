@@ -43,4 +43,17 @@ export default {
   justify-content: center;
   text-align: center;
 }
+// .container{
+//   background-image: url(https://wallpaperaccess.com/full/1436850.jpg); 
+//   height: 100%;
+//   width: 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+
+// -webkit-background-size: contain;
+// -moz-background-size: contain;
+// -o-background-size: contain;
+// background-size: contain;
+// }
 </style>
