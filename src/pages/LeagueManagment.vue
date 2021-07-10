@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="func">
       <b-container class="bv-example-row">
-        <b-row >
-          <b-col align-h="center"><br><br>
+        <b-row align-h="center">
+          <b-col cols="4" align-h="center"><br><br>
              <router-link :to="{name: 'AddGame'}">
                <div>
                 <b-card
@@ -21,7 +21,7 @@
               </div>
              </router-link>
           </b-col>
-          <b-col align-h="center"><br><br>
+          <b-col cols="4" align-h="center" ><br><br>
             <b-card
               title="Sort match"
               img-src="https://cdn.vox-cdn.com/thumbor/kdUXeIdF99iDYkUh_4TeI-kAC9o=/0x0:4775x3091/1200x800/filters:focal(2006x1164:2770x1928)/cdn.vox-cdn.com/uploads/chorus_image/image/69239730/1303177487.0.jpg"
@@ -43,25 +43,25 @@
         </b-row>
       </b-container>
     <br>
-    <span>
-    <h1 class="main-part">Past Matchs</h1><br>
+    <b-row class="justify-content-md-center">
+    <h1 class="main-part LM">Past Matches</h1><br>
         <PreviewWrapper :key="componentKeyPast"
         v-if="hasPastGame" 
         tag="div"
         type="game"
         :results="pastGames"
         ></PreviewWrapper>
-    </span>
+    </b-row>
     <br>
-    <span>
-    <h1 class="main-part">Upcomoing Matchs</h1><br>
+    <b-row class="justify-content-md-center">
+    <h1 class="main-part LM">Upcomoing Matches</h1><br>
         <PreviewWrapper :key="componentKeyNext" 
         v-if="hasNextGame"
         tag="div" 
         :type="'game'"
         :results="upComingGames"
         ></PreviewWrapper>
-    </span>
+    </b-row>
   </div>
 
 </template>
@@ -123,5 +123,12 @@ export default {
 </script>
 
 <style>
-
+  .func{
+    background-color: rgba(53, 81, 81, 0.755);
+  }
+  .LM{
+    color:floralwhite;
+    vertical-align: middle;
+    display: inline-block;
+  }
 </style>
