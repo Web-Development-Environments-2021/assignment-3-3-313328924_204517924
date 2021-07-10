@@ -4,7 +4,7 @@
     <b-container class="bv-example-row">
       <b-row align-h="center">
         <b-col align-h="center"><LeagueInfo></LeagueInfo></b-col>
-        <b-col align-h="center">
+        <b-col id="main-page-login" align-h="center">
           <LoginPage v-if="!$root.store.username"></LoginPage>
           <FavoriteGames v-else></FavoriteGames>
         </b-col>
@@ -42,6 +42,9 @@ export default {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+#main-page-login{
+  margin-top: 35px;
 }
 // .container{
   
