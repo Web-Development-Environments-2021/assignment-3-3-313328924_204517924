@@ -1,5 +1,7 @@
 <template>
     <b-container fluid="lg">
+        <b-container class="main-part">
+
         <b-row align-h="center">
             <h2>{{name}}'s Team Card </h2>
         </b-row>
@@ -26,6 +28,7 @@
                 </b-card>
             </b-col>
         </b-row>
+        </b-container>
         <b-row>
             <b-col align-h="center">
                 <b-button v-b-toggle.collapse-1 variant="primary">Show Team's Players</b-button>
@@ -63,7 +66,7 @@
 export default {
     data(){
         return{
-            id: 939,
+            id: 0,
             name: "",
             shortcode: "",
             foundation: 0,
@@ -76,8 +79,8 @@ export default {
     methods: {
         async getTeamFullDetails(){
             try{
-                // const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
-                const teamDetails = JSON.parse(sessionStorage.getItem('teamById'));
+                const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
+                // const teamDetails = JSON.parse(sessionStorage.getItem('teamById'));
                 this.name = teamDetails.data.name;
                 this.shortcode = teamDetails.data.shortcode;
                 this.foundation = teamDetails.data.foundation;
@@ -94,7 +97,7 @@ export default {
         },
     },
     created(){
-        // this.id = this.$route.params.teamId;
+        this.id = this.$route.params.teamId;
         this.getTeamFullDetails()
     }
 }

@@ -44,7 +44,7 @@
       </b-container>
     <br>
     <span>
-    <h1>Past Matchs</h1><br>
+    <h1 class="main-part">Past Matchs</h1><br>
         <PreviewWrapper :key="componentKeyPast"
         v-if="hasPastGame" 
         tag="div"
@@ -54,7 +54,7 @@
     </span>
     <br>
     <span>
-    <h1>Upcomoing Matchs</h1><br>
+    <h1 class="main-part">Upcomoing Matchs</h1><br>
         <PreviewWrapper :key="componentKeyNext" 
         v-if="hasNextGame"
         tag="div" 

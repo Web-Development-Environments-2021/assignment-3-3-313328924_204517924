@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container fluid="lg">
-      <b-container id=search>
+      <b-container class="main-part">
 
       <b-row align-h="center" class="justify-content-md-center">
         <h1 class="title">Sperliga Search Page</h1>
@@ -180,15 +180,9 @@ export default {
     this.manipulatedResults = JSON.parse(localStorage.getItem('manipulated') || "[]");
     this.searchQuery = (window.localStorage.getItem('query') === null) ? "" : window.localStorage.getItem('query');
     this.type = (window.localStorage.getItem('type') === null) ? "player" : window.localStorage.getItem('type');
-    
-    if(window.sessionStorage.getItem('doRefresh') === "1"){
-      window.sessionStorage.setItem('doRefresh', "0");  
-      this.$router.go()
-    }
     this.sortOptions[1].disabled = (this.type === 'team') ? true : false;
   },
   beforeDestroy(){
-    window.sessionStorage.setItem('doRefresh', "1");
     if(this.$root.store.username)
       this.saveSearch();
     else  
@@ -198,11 +192,7 @@ export default {
 </script>
 
 <style scoped>
-#search{
-  background-color: rgba(211, 211, 211, 0.616);
-  background-position: center;
-  padding: 10px; 
-}
+
 #search-input {
   margin:15px;
   width: 500px; 

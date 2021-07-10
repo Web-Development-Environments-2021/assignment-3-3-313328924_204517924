@@ -81,7 +81,12 @@ export default {
   min-height: 100vh;
 }
 
-
+.main-part{
+  background-color: rgba(211, 211, 211, 0.616);
+  background-position: center;
+  padding: 10px; 
+  box-shadow: rgba(139, 139, 139, 0.616) 
+}
 #nav {
   padding: 30px;
 }

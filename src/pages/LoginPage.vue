@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container main-part">
     <h1 class="title">Login</h1>
     <b-form @submit.prevent="onLogin">
       <b-form-group

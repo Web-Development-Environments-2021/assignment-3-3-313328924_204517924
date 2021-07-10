@@ -1,5 +1,5 @@
 <template>
-        <b-container fluid="xl">
+        <b-container class="main-part" fluid="xl">
             <b-row align-h="center">
                 <h2>{{name}}'s Player Card </h2>
             </b-row>

@@ -2,7 +2,7 @@
     <div>
         <br><br>
     <b-row class="justify-content-md-center">
-        <h1>Past Matches</h1><br>
+        <h1 class="main-part">Past Matches</h1><br>
             <PreviewWrapper 
             v-if="hasPastGame"
             tag="div" 
@@ -12,7 +12,7 @@
     </b-row>
     <br>
     <b-row class="justify-content-md-center">
-    <h1>Upcomoing Matches</h1><br>
+    <h1 class="main-part">Upcomoing Matches</h1><br>
         <PreviewWrapper  
         v-if="hasNextGame" 
         tag="col"

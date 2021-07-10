@@ -1,21 +1,23 @@
 <template>
     <b-container >
-        <b-row class="justify-content-md-center">
-            <h1 class="title">Your Favorites</h1>
-        </b-row>
-        <b-row class="justify-content-md-center">
-            <b-form-group v-slot="{ ariaDescribedby }">
-                <b-form-radio-group
-                    id="btn-radios-1"
-                    v-model="type"
-                    @change="getFavorite($event)"
-                    :options="options"
-                    :aria-describedby="ariaDescribedby"
-                    name="radios-btn-default"
-                    buttons
-                ></b-form-radio-group>
-            </b-form-group>
-        </b-row>    
+        <b-container class="main-part">
+            <b-row class="justify-content-md-center">
+                <h1 class="title">Your Favorites</h1>
+            </b-row>
+            <b-row class="justify-content-md-center">
+                <b-form-group v-slot="{ ariaDescribedby }">
+                    <b-form-radio-group
+                        id="btn-radios-1"
+                        v-model="type"
+                        @change="getFavorite($event)"
+                        :options="options"
+                        :aria-describedby="ariaDescribedby"
+                        name="radios-btn-default"
+                        buttons
+                    ></b-form-radio-group>
+                </b-form-group>
+            </b-row>    
+        </b-container>
         <b-row class="justify-content-md-center">
             <PreviewWrapper
             v-if="favorites.length > 0"
@@ -23,7 +25,7 @@
             :type="type"
             :results="favorites"
             ></PreviewWrapper>
-            <div v-else>
+            <div style="color: white" v-else>
                 <h3><strong>There are no favorite {{type}}s</strong></h3>
                 <p>In order to add a {{type}} as a favorite <br>go to a {{type}} page and click the Add Favorite button</p>
             </div>
@@ -67,6 +69,9 @@ export default {
     created() {
         this.getFavorite(this.type)
     },
+    beforeDestroy(){
+        this.$router.go()
+    }
 }
 </script>
 <style>
