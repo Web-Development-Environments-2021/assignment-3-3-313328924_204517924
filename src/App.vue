@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand :to="{ name: 'main' }">Superliga Vue</b-navbar-brand>
+      <b-navbar-brand :to="{ name: 'main' }">Superliga Vue &emsp;<img class="img" src="./assets/superLiga.png" ></b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
         <b-nav-item :to="{ name: 'About'}">About</b-nav-item>
@@ -90,5 +90,9 @@ export default {
 }
 .router-container{
   align-items: center;
+  }
+  .img{
+    width: 30px;
+    height: 30px;
   }
 </style>
