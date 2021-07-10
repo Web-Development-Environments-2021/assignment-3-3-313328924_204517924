@@ -90,6 +90,7 @@ export default {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%; 
+ 
 
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -102,7 +103,8 @@ export default {
   background-color: rgba(211, 211, 211, 0.616);
   background-position: center;
   padding: 10px; 
-  box-shadow: rgba(139, 139, 139, 0.616) 
+  box-shadow:0px 0px 10px 10px #dbdbdb93;
+  border-radius: 5px;
 }
 #nav {
   padding: 30px;

@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1 class="title">Main Page</h1>
+  <div class="main-part container">
+    <h1 class="title ">Main Page</h1>
     <b-container class="bv-example-row">
       <b-row align-h="center">
         <b-col align-h="center"><LeagueInfo></LeagueInfo></b-col>

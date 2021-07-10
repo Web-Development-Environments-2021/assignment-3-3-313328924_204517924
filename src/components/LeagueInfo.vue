@@ -9,7 +9,7 @@
             <br/>
             Stage: {{ stage }} 
         </div>
-    </div>
+      </div>
     </b-row>
     <b-row align-h="center">
         <PreviewWrapper  
@@ -59,7 +59,6 @@ export default {
 
 <style>
 .info{
-  background-image: url("../assets/superliga.jpg"); 
   height: 100%;
   width: 100%;
   background-position: center;
@@ -77,13 +76,17 @@ export default {
   border-radius: 10px;
   border-width: 5px;
   border-color:rgb(44, 89, 116);
+  font-size: 20px;
+  padding: 10px;
+
 }
 
 .league-preview .league-title {
   text-align: center;
   text-transform: uppercase;
   font-family:fantasy;
-  color:  rgb(111, 155, 197);
+  color:  rgb(40, 70, 99);
+  font-size: 25px;
 }
 
 .league-preview .league-content {
