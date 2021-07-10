@@ -1,5 +1,6 @@
 <template>
 <div>
+  <b-col>
       <b-card id="game-preview" border-variant="dark" header="Dark" align="center" bg-variant="light" text-variant="dark" >
         <template #header>
         <b-row align-h="center">
@@ -7,7 +8,7 @@
              &#128197; {{game.date.substring(0,10)}}
           </b-col>
           <b-col align-h="center">
-            &#128348; {{game.time.substring(11,18)}}
+            &#128348; {{game.time.substring(11,19)}}
           </b-col>
         </b-row>
         </template>
@@ -31,12 +32,12 @@
             <strong>Stadium: {{game.stadium}}</strong>
           </b-row>
         </b-col>
-        <b-col>
+        <!-- <b-col align-h="center">
           <GameActivities
             v-if="myToggle"
             :game="gameId"
           ></GameActivities>
-        </b-col>
+        </b-col> -->
         </b-card-text>
         <template #footer>
           <b-button-group v-if="currentRouteName" style="font-family:'Times New Roman', Times, serif">
@@ -44,17 +45,22 @@
             <b-button v-if="checkIfAdmin"  variant="danger">
               <router-link  :to="{name: 'EditGame', params:{gameId:gameId}}">Edit match</router-link>
             </b-button>
-            <!-- <b-button>  -->
             <AddFavorite
             v-if="checkValid"
             :type="'Games'"
             :id="gameId"
             ></AddFavorite>
-            <!-- </b-button> -->
           </b-button-group>
           <p v-else> SuperLiga</p>
         </template>
       </b-card>
+      </b-col>
+      <b-col align-h="center">
+        <GameActivities
+          v-if="myToggle"
+          :game="gameId"
+        ></GameActivities>
+      </b-col>
   </div>
 </template>
 
@@ -117,7 +123,7 @@ export default {
       },
     currentRouteName() {
       // console.log(this.$route.name)
-      if(this.$route.name != "main")
+      if(this.$route.name != "main" & this.$route.name != "Favorite")
         return true;
         else
           return false;
