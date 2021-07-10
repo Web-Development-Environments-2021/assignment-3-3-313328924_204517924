@@ -112,7 +112,7 @@ const shared_data = {
         console.log("logout");
         sessionStorage.removeItem("username");
         this.username = undefined;
-        window.localStorage.clear()
+        window.localStorage.clear();
         console.log(JSON.parse(localStorage.getItem('manipulated')));
     }
 };
@@ -120,7 +120,8 @@ const shared_data = {
 router.beforeEach((to, from, next) => {
     if (shared_data.username) {
         const cookie = window.$cookies.get('session');
-        console.log(cookie)
+        console.log(cookie);
+        console.log(cookie);
         if (!cookie) {
             shared_data.logout();
             next({ name: 'main' });
