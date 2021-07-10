@@ -109,10 +109,19 @@ export default {
         const result = await this.axios.get(
           `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
         this.results = result.data;
-        console.log(this.results);
-        // this.results = JSON.parse(sessionStorage.getItem('team')).data.players;
-        // this.results = [{id:1, name:"kkkk", image:"dfsdf", position:2, team_name:"zzzz"}, {id:1, name:"aaaa", image:"dfsdf", position:1, team_name:"yyyy"}, {id:1, name:"cccc", image:"dfsdf", position:3, team_name:"wwww"}, {id:1, name:"dddd", image:"dfsdf", position:1, team_name:"xxxx"}];
-        this.manipulatedResults = this.results;
+        if(this.type === "player"){
+          this.results.forEach(res =>{
+            console.log(res);
+            console.log(this.$root.store.superLigaTeams);
+            if(this.$root.store.superLigaTeams.includes(res.team_name)){
+              this.manipulatedResults.push(res);
+            }
+          });
+          this.results = this.manipulatedResults;
+        }else{
+          this.manipulatedResults = this.results;
+        }
+        console.log(this.manipulatedResults);
         this.apply;
       }catch(err){
         this.hasResults = false;
@@ -122,6 +131,7 @@ export default {
       this.hasResults = true
       this.results = [];
       this.manipulatedResults = [];
+      console.log(this.type);
       this.sortOptions[1].disabled = (this.type === 'team') ? false : true;
     },
     sortResults(){
@@ -131,8 +141,6 @@ export default {
         this.manipulatedResults.sort((a,b) => (a.team_name > b.team_name) ? 1 : ((b.team_name > a.team_name) ? -1 : 0));  
       }
     },
-    
-
     filterPositions(){
       if (this.positionFilter !== ""){
         console.log(parseInt(this.positionFilter));
@@ -169,6 +177,7 @@ export default {
     this.manipulatedResults = JSON.parse(localStorage.getItem('manipulated') || "[]");
     this.searchQuery = (window.localStorage.getItem('query') === null) ? "" : window.localStorage.getItem('query');
     this.type = (window.localStorage.getItem('type') === null) ? "player" : window.localStorage.getItem('type');
+    
     if(window.sessionStorage.getItem('doRefresh') === "1"){
       window.sessionStorage.setItem('doRefresh', "0");  
       this.$router.go()

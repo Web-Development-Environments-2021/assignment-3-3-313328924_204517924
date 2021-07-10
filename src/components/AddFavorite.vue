@@ -18,6 +18,7 @@ export default {
     props:{type: String, id:Number},
     data(){
         return{
+            gameId: 0,
             isFavorite: false
         }
     },
@@ -35,12 +36,14 @@ export default {
             }
         },
         async checkIfAlreadyFavorite(){
+            // console.log("CHECKFAVORITE");
             try{
                 const res = await this.axios.get(`${this.$root.store.domain_server}/users/getFavorite${this.type}`,{ 
                     withCredentials: true
                 });
                 if(typeof(res.data) !== "string"){
                     for(let fav in res.data){
+                        console.log(this.id);
                         if(res.data[fav].id === this.id){
                             this.isFavorite = true;
                             return;
@@ -55,6 +58,7 @@ export default {
         }
     },
     created(){
+        this.gameId = this.id;
         this.checkIfAlreadyFavorite();
     }
 }

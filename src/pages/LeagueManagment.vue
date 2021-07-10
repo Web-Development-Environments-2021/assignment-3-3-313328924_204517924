@@ -1,7 +1,7 @@
 <template>
     <div>
       <b-container class="bv-example-row">
-        <b-row>
+        <b-row >
           <b-col align-h="center"><br><br>
              <router-link :to="{name: 'AddGame'}">
                <div>

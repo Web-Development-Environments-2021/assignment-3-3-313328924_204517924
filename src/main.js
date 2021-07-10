@@ -98,6 +98,18 @@ Vue.config.productionTip = false;
 
 const shared_data = {
     domain_server: "http://localhost:3000",
+    superLigaTeams: ["Midtjylland",
+        "AaB",
+        "AGF",
+        "Brøndby",
+        "København",
+        "Midtjylland",
+        "Nordsjælland",
+        "OB",
+        "Randers",
+        "Silkeborg",
+        "SønderjyskE",
+        "Viborg"],
 
     // username: localStorage.username,
     username: sessionStorage.username,
@@ -120,7 +132,6 @@ const shared_data = {
 router.beforeEach((to, from, next) => {
     if (shared_data.username) {
         const cookie = window.$cookies.get('session');
-        console.log(cookie);
         console.log(cookie);
         if (!cookie) {
             shared_data.logout();

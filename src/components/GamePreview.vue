@@ -91,6 +91,7 @@ export default {
       if(this.$root.store.username==="AdminUser")
         this.isAdmin = true;
       this.gameId = this.data.game_id;
+      console.log(this.gameId);
       this.game.date = this.data.date;
       this.game.time = this.data.time;
       this.game.homeTeam = this.data.home_team;
