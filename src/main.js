@@ -116,17 +116,21 @@ const shared_data = {
 
     // username: localStorage.username,
     username: sessionStorage.username,
+    urlPhoto: "",
     searchTypes: ["team"], //our app allows search for teams and players
 
-    login(username) {
+    async login(username, pic) {
         sessionStorage.setItem("username", username);
         this.username = username;
         console.log("login", this.username);
+        this.urlPhoto = pic;
+
     },
     logout() {
         console.log("logout");
         sessionStorage.removeItem("username");
         this.username = undefined;
+        // this.urlPhoto = "https://cdn.sportmonks.com/images/soccer/placeholder.png"
         window.localStorage.clear();
         console.log(JSON.parse(localStorage.getItem('manipulated')));
     }

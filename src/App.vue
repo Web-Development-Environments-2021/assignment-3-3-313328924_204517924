@@ -24,7 +24,7 @@
           <b-dropdown-item href="#" @click="Logout">Log Out</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item>
-          <b-avatar variant="info" :src="getUserPhoto"></b-avatar>
+          <b-avatar variant="info" :src="this.$root.store.urlPhoto"></b-avatar>
         </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -38,6 +38,7 @@ export default {
   name: "App",
   data(){
     return{
+      imageUrl:""
 
     }
   },
@@ -48,20 +49,10 @@ export default {
       else
         return false;
     },
-     getUserPhoto(){
-      try{
-      const url =  this.axios.get(`${this.$root.store.domain_server}/users/userPhoto`, {
-        withCredentials: true
-      });
-      console.log(url.data);
-      let res = "https://placekitten.com/300/300";
-      return res;
-      }catch(err){
-        console.log(err);
-        let a = "https://cdn.sportmonks.com/images/soccer/placeholder.png";
-        return a;
-      }
-    }
+    // getUrl(){
+    //   this.imageUrl = this.$root.store.urlPhoto;
+    //   return
+    // }
   },
   methods: {
     Logout() {
@@ -77,6 +68,7 @@ export default {
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
+      
     },
   }
 };
