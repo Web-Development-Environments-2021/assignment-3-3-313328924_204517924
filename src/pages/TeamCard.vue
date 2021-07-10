@@ -77,7 +77,7 @@ export default {
         async getTeamFullDetails(){
             try{
                 // const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
-                const teamDetails = JSON.parse(sessionStorage.getItem('team'));
+                const teamDetails = JSON.parse(sessionStorage.getItem('teamById'));
                 this.name = teamDetails.data.name;
                 this.shortcode = teamDetails.data.shortcode;
                 this.foundation = teamDetails.data.foundation;
@@ -86,7 +86,7 @@ export default {
                 this.pastFixures = teamDetails.data.past_fixures;
                 this.futureFixures = teamDetails.data.future_fixtures;
                 this.players = teamDetails.data.players;
-                // window.sessionStorage.setItem('team', JSON.stringify(teamDetails));
+                // window.sessionStorage.setItem('teamById', JSON.stringify(teamDetails));
             }catch(err){
                 console.log(err);
             }

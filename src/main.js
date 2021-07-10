@@ -44,7 +44,9 @@ import {
     FormRadioPlugin,
     ImagePlugin,
     ListGroupPlugin,
-    ButtonGroupPlugin
+    ButtonGroupPlugin,
+    TablePlugin,
+    ModalPlugin
 } from "bootstrap-vue";
 [
     FormGroupPlugin,
@@ -61,7 +63,9 @@ import {
     FormRadioPlugin,
     ImagePlugin,
     ListGroupPlugin,
-    ButtonGroupPlugin
+    ButtonGroupPlugin,
+    TablePlugin,
+    ModalPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 
