@@ -50,7 +50,9 @@ export default {
     },
      getUserPhoto(){
       try{
-      const url =  this.axios.get(`${this.$root.store.domain_server}/users/userPhoto`);
+      const url =  this.axios.get(`${this.$root.store.domain_server}/users/userPhoto`, {
+        withCredentials: true
+      });
       console.log(url.data);
       let res = "https://placekitten.com/300/300";
       return res;
