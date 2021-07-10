@@ -1,5 +1,5 @@
 <template>
-    <div><br>
+    <div class="info"><br>
       <b-row align-h="center">
       <h1>League information &#9917;</h1>
       <div class="league-preview">
@@ -58,6 +58,15 @@ export default {
 </script>
 
 <style>
+.info{
+  background-image: url("../assets/superliga.jpg"); 
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
 .league-preview {
   display: inline-block;
   width: 375px;
