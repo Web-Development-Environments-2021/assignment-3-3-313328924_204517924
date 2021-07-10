@@ -44,7 +44,7 @@
       </b-container>
     <br>
     <b-row class="justify-content-md-center">
-    <h1 class="main-part LM">Past Matches</h1><br>
+    <h1 class="main-part">Past Matches</h1><br>
         <PreviewWrapper :key="componentKeyPast"
         v-if="hasPastGame" 
         tag="div"
@@ -54,7 +54,7 @@
     </b-row>
     <br>
     <b-row class="justify-content-md-center">
-    <h1 class="main-part LM">Upcomoing Matches</h1><br>
+    <h1 class="main-part">Upcomoing Matches</h1><br>
         <PreviewWrapper :key="componentKeyNext" 
         v-if="hasNextGame"
         tag="div" 
@@ -123,12 +123,4 @@ export default {
 </script>
 
 <style>
-  .func{
-    background-color: rgba(53, 81, 81, 0.755);
-  }
-  .LM{
-    color:floralwhite;
-    vertical-align: middle;
-    display: inline-block;
-  }
 </style>

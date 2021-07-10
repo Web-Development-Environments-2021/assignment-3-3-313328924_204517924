@@ -42,8 +42,8 @@
         <template #footer>
           <b-button-group v-if="currentRouteName" style="font-family:'Times New Roman', Times, serif">
             <b-button v-if="currentRouteName" :pressed.sync="myToggle" variant="primary" >Show activities</b-button>
-            <b-button v-if="checkIfAdmin"  variant="danger">
-              <router-link  :to="{name: 'EditGame', params:{gameId:gameId}}">Edit match</router-link>
+            <b-button  v-if="checkIfAdmin"  variant="danger">
+              <router-link id="edit" :to="{name: 'EditGame', params:{gameId:gameId}}">Edit match</router-link>
             </b-button>
             <AddFavorite
             v-if="checkValid"
@@ -160,6 +160,9 @@ export default {
 #game-preview{
   margin: 5px;
   width: 28rem;
+}
+#edit{
+  color: white;
 }
 
 </style>

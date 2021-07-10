@@ -118,4 +118,8 @@ export default {
   width: 40px;
   height: 40px;
 }
+
+#__BVID__75{
+  align-self: center;
+}
 </style>

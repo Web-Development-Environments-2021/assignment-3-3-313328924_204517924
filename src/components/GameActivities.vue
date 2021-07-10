@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="main-part">
       <b-table-simple hover small caption-top responsive size="small">
           <b-thead>
               <b-tr>

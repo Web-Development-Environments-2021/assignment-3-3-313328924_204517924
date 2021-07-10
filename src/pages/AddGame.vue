@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="main-part">
         <h1 style="color:darkslategrey;">Add game</h1> <br>
             <b-form>
             <b-form-group
