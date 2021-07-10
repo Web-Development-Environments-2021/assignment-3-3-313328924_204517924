@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand :to="{ name: 'main' }">Superliga Vue &emsp;<img class="img" src="./assets/superLiga.png" ></b-navbar-brand>
+    <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar-brand :to="{ name: 'main' }">Superliga Vue &emsp;<img class="img" src="./assets/whitelogo.png" ></b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
         <b-nav-item :to="{ name: 'About'}">About</b-nav-item>
@@ -26,7 +26,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -69,12 +69,18 @@ export default {
 @import "@/scss/form-style.scss";
 
 #app {
+  background-image: url("https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/23632634_150062109078223_4692784799966569687_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=973b4a&_nc_ohc=FrdN_oUMqe0AX9SN_HD&_nc_ht=scontent.fsdv1-2.fna&oh=5b6b91b7bf406d857cdc43135b08d578&oe=60EE442C"); 
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%; 
+
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
 }
+
 
 #nav {
   padding: 30px;
@@ -91,8 +97,9 @@ export default {
 .router-container{
   align-items: center;
   }
-  .img{
-    width: 30px;
-    height: 30px;
-  }
+.img{
+  margin: 0;
+  width: 40px;
+  height: 40px;
+}
 </style>

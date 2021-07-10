@@ -44,9 +44,8 @@ export default {
   text-align: center;
 }
 // .container{
-//   background-image: url(https://wallpaperaccess.com/full/1436850.jpg); 
-//   height: 100%;
-//   width: 100%;
+  
+// }
 //   background-position: center;
 //   background-repeat: no-repeat;
 //   background-size: cover;

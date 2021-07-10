@@ -14,7 +14,7 @@
                                 <b-list-group-item><strong>Year:</strong> 3'rd</b-list-group-item>
                                 <b-list-group-item><strong>Institution: </strong>Ben Gurion University</b-list-group-item>
                                 <b-list-group-item><strong>Birthday:</strong> May 9'th</b-list-group-item>
-                                <b-list-group-item><strong>Hobies:</strong> Flipping omelets</b-list-group-item>
+                                <b-list-group-item><strong>Hobies:</strong> Playin Music</b-list-group-item>
                             </b-list-group>
                         </b-card-text>
                     </b-card>
@@ -28,11 +28,21 @@
                                 <b-list-group-item><strong>Year:</strong> 3'rd</b-list-group-item>
                                 <b-list-group-item><strong>Institution: </strong>Ben Gurion University</b-list-group-item>
                                 <b-list-group-item><strong>Birthday:</strong> May 9'th</b-list-group-item>
-                                <b-list-group-item><strong>Hobies:</strong> Flipping omelets</b-list-group-item>
+                                <b-list-group-item><strong>Hobies:</strong> Playing Basketball</b-list-group-item>
                             </b-list-group>
                         </b-card-text>
                     </b-card>
+                    <br><br>    
                 </b-col>
+            </b-row>
+            <b-row align-h="center" class="more">
+                More By Tamir And Ofer:
+            </b-row>
+            <b-row align-h="center" class="more">
+                <a href="https://github.com/Web-Development-Environments-2021/Assignment2_313328924_204517924">Packman Game</a>  
+            </b-row>
+            <b-row align-h="center" class="more">
+                <a href="https://github.com/tamirshilony/Ben-Gurion-Registration-System-Server-and-Client">Ben Gurion Registration System Server and Client</a>  
             </b-row>
         </b-container>
     </div>
@@ -57,5 +67,8 @@ export default {
     #header{
         margin-right: 100px ;
         padding: 35px;
+    }
+    .more{
+        font-size: 30px;
     }
 </style>

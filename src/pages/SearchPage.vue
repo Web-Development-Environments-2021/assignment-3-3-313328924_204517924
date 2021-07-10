@@ -1,6 +1,8 @@
 <template>
-  <div >
-    <b-container fluid="xl">
+  <div>
+    <b-container fluid="lg">
+      <b-container id=search>
+
       <b-row align-h="center" class="justify-content-md-center">
         <h1 class="title">Sperliga Search Page</h1>
       </b-row>
@@ -49,6 +51,7 @@
           </b-button>
         </b-col>
       </b-row>
+      </b-container>
 
       <br/>
       <b-row align-h="center" class="justify-content-md-center" >
@@ -195,6 +198,11 @@ export default {
 </script>
 
 <style scoped>
+#search{
+  background-color: rgba(211, 211, 211, 0.616);
+  background-position: center;
+  padding: 10px; 
+}
 #search-input {
   margin:15px;
   width: 500px; 
