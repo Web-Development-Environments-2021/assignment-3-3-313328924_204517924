@@ -112,9 +112,9 @@ export default {
         const result = await this.axios.get(
           `${this.$root.store.domain_server}/${this.type}s/${this.type}Search/${this.searchQuery}`);
         this.results = result.data;
+        console.log(this.results);
         if(this.type === "player"){
           this.results.forEach(res =>{
-            console.log(res);
             console.log(this.$root.store.superLigaTeams);
             if(this.$root.store.superLigaTeams.includes(res.team_name)){
               this.manipulatedResults.push(res);

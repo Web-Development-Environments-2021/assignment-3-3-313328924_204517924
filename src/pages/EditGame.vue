@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-container class="bv-example-row">
+        <b-container class="main-part bv-example-row">
             <b-row>
                 <b-col><br>
                 <h1>Update game</h1><br>

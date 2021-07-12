@@ -80,13 +80,14 @@ export default {
         async getTeamFullDetails(){
             try{
                 const teamDetails = await this.axios.get(`${this.$root.store.domain_server}/teams/getTeamFullData/${this.id}`);
+                console.log(teamDetails);
                 // const teamDetails = JSON.parse(sessionStorage.getItem('teamById'));
                 this.name = teamDetails.data.name;
                 this.shortcode = teamDetails.data.shortcode;
                 this.foundation = teamDetails.data.foundation;
                 this.logo = teamDetails.data.logo;
                 // this.pastFixures = teamDetails.data.past_fixtures;
-                this.pastFixures = teamDetails.data.past_fixures;
+                this.pastFixures = teamDetails.data.past_fixtures;
                 this.futureFixures = teamDetails.data.future_fixtures;
                 this.players = teamDetails.data.players;
                 // window.sessionStorage.setItem('teamById', JSON.stringify(teamDetails));
