@@ -9,7 +9,7 @@
                 </b-col>
                 <b-col align-self="center">
                     <b-card style="width:25rem" title="Player Info:">
-                        <b-card-text >
+                        <b-card-text v-resize-text>
                             <b-list-group flush>
                                 <b-list-group-item>Full Name: {{name}}</b-list-group-item>
                                 <b-list-group-item>Common Name: {{commonName}}</b-list-group-item>

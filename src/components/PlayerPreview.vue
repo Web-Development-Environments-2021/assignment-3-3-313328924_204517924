@@ -71,7 +71,7 @@ export default {
         color: white;
     }
     .card{
-        width: 20rem;
+        max-width: 20rem;
     }
     img{
         width: 16rem;

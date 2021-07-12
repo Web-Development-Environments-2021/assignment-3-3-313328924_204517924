@@ -3,20 +3,20 @@
         <b-container class="main-part bv-example-row">
             <b-row>
                 <b-col><br>
-                <h1>Update game</h1><br>
-                <b-form>
-                <b-form-group id="input-group-3" label="Score:" label-for="input-3">
-                    <b-form-input
-                    id="input-3"
-                    v-model="updateForm.score"
-                    placeholder="Enter score"
-                    required
-                    ></b-form-input>
-                </b-form-group> 
-                </b-form> 
-                <b-button type="submit" @click="updateGame">Update Game</b-button>  
-                <b-button type="submit" @click="resetUpdate">Reset</b-button> <br>
-                <h3 v-if="updateError">error</h3>
+                    <h1>Update game</h1><br>
+                    <b-form>
+                    <b-form-group id="input-group-3" label="Score:" label-for="input-3">
+                        <b-form-input
+                        id="input-3"
+                        v-model="updateForm.score"
+                        placeholder="Enter score"
+                        required
+                        ></b-form-input>
+                    </b-form-group> 
+                    </b-form> 
+                    <b-button type="submit" @click="updateGame">Update Game</b-button>  
+                    <b-button type="submit" @click="resetUpdate">Reset</b-button> <br>
+                    <h3 v-if="updateError">error</h3>
                 </b-col>
                 <b-col>
                     <h1>Insert Activity</h1><br>

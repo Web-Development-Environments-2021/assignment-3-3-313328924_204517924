@@ -1,6 +1,6 @@
 <template>
-    <b-container fluid="lg">
-        <b-container class="main-part">
+    <b-container class="main-part" fluid="lg">
+        <b-container>
 
         <b-row align-h="center">
             <h2>{{name}}'s Team Card </h2>
@@ -29,7 +29,7 @@
             </b-col>
         </b-row>
         </b-container>
-        <b-row>
+        <b-row >
             <b-col align-h="center">
                 <b-button v-b-toggle.collapse-1 variant="primary">Show Team's Players</b-button>
                 <b-collapse id="collapse-1" class="mt-2">
@@ -100,6 +100,9 @@ export default {
     created(){
         this.id = this.$route.params.teamId;
         this.getTeamFullDetails()
+    },
+    beforeDestroy(){
+         this.$router.go()
     }
 }
 </script>

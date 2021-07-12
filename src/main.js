@@ -26,6 +26,7 @@ Vue.component("AddFavorite", AddFavorite);
 import VueCookies from 'vue-cookies';
 Vue.use(VueCookies);
 
+import VueResizeText from 'vue-resize-text';
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -70,6 +71,7 @@ import {
     AvatarPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
+Vue.use(VueResizeText);
 
 axios.interceptors.request.use(
     function(config) {
