@@ -32,8 +32,9 @@ export default {
       console.log(this.games);
       if(this.games === " there are no favorites games")
         this.hasFavorites = false;
-      else if(this.games.length()>=3)
+      else if(this.games.length>=3){
         this.games = this.games.slice(0,3);
+      }
       else
         this.games = this.games.slice(0,this.games.length());
       // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");

@@ -101,7 +101,6 @@ export default {
           },
           { withCredentials: true }
         );
-        console.log(loginRespons);
         // const response = await this.axios.post(
         //   "https://localhost:3000/user/Login",
         //   {
@@ -114,8 +113,6 @@ export default {
         const url_photo = await this.axios.get(`${this.$root.store.domain_server}/users/userPhoto`, {
             withCredentials: true
         });
-        console.log(url_photo);
-        console.log(url_photo.data[0].pic);
         this.$root.store.login(this.form.username,url_photo.data[0].pic);
         this.$router.push("/").catch(()=>{});
       } catch (err) {
