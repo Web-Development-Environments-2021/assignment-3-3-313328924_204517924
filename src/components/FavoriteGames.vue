@@ -37,14 +37,7 @@ export default {
       }
       else
         this.games = this.games.slice(0,this.games.length());
-      // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-      // for (let i = 0; i<this.games.length;i++){
-      //   console.log(this.games[i]);
-      //   this.games[i].isPreviwe = true;
-      //   console.log(this.games[i].isPreviwe)
-      // }
-      // console.log(this.games);
-    }catch(err){
+     }catch(err){
 
     }
   },
