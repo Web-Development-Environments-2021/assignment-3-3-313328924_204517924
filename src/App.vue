@@ -78,7 +78,7 @@ export default {
 @import "@/scss/form-style.scss";
 
 #app {
-  background-image: url("https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/23632634_150062109078223_4692784799966569687_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=973b4a&_nc_ohc=FrdN_oUMqe0AX9SN_HD&_nc_ht=scontent.fsdv1-2.fna&oh=5b6b91b7bf406d857cdc43135b08d578&oe=60EE442C"); 
+  background-image: url("./assets/fans.jpg"); 
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%; 
